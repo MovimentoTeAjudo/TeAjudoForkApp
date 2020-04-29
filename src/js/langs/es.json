@@ -1,0 +1,118 @@
+{
+  "menu" : {
+    "mapa" : "Mapa",
+    "sobre" : "Acerca",
+    "seguranca" : "Seguridad",
+    "handup" : "Puedo ayudar",
+    "needup" : "Necesito ayuda",
+    "marketup" : "Tengo un pequeño negocio",
+    "mapup" : "Ve al mapa",
+    "contato" : "Contacto",
+    "voluntarios": "Voluntarios"
+  },
+  "home": {
+    "map" : {
+      "location" : "Usa mi ubicación",
+      "search_area" : "Buscar esta área",
+      "marker" : {
+        "esta_aqui" :  "Tu estás aquí",
+        "drag" : "Si es necesario, arrastre el pin a otro punto."
+      },
+      "popup" : {
+        "type_volunteer" : "Voluntario",
+        "type_user" : "Solicitante",
+        "type_doctor" : "Psicólogo(a)",
+        "talk_to" : "Habla conmigo por",
+        "phone" : "Teléfono",
+        "help_with" :  "Puedo ayudar con",
+        "help_with_user" :  "Necesito ayuda con",
+        "help" : {
+          "market" : "Compras en el mercado",
+          "food" : "Dar comida",
+          "talk" : "Puedo hablar",
+          "talk_2" : "I Need to Talk",
+          "health" : "Ir a la farmacia",
+          "dog" : "pasear con el perro"
+        }
+      }
+    }
+  },
+  "about": {
+    "title" : "Acerca",
+    "text" : "<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>"
+  },
+  "sidebar": {
+    "title" : "Sus datos personales",
+    "total" : {
+      "requests" : "Pedidos",
+      "volunteers" : "Voluntarios",
+      "small_business" : "Pequeña empresa"
+    },
+    "form" : {
+      "name" : "Tu nombre",
+      "phone" : "Teléfono",
+      "input" : {
+        "example" : "Ejemplo",
+        "countrySelectorLabel" : "Código",
+        "countrySelectorError" : "Elige un código",
+        "phoneNumberLabel" : "Número de teléfono"
+      },
+      "whatsapp" : "¿Puedes chatear por whatsapp?",
+      "email" : "E-mail",
+      "city":  "Ciudad",
+      "state" : "Cual es tu estado?",
+      "subtitle" : "Puedo ayudar con:",
+      "subtitle_2" : "Necesito ayuda con",
+      "i_am_doctor": "Soy psicóloga(o)",
+      "document" : "Por favor ingrese su número de identificación",
+      "help" : {
+        "market" : "Compras en el mercado",
+        "food" : "Dar comida",
+        "talk" : "Puedo hablar",
+        "talk_2" : "Necesito hablar",
+        "health" : "Ir a la farmacia",
+        "dog" : "pasear con el perro",
+        "others" : "Otras solicitudes"
+      },
+      "truth": "Confirmo la veracidad de la información proporcionada, asumo toda la responsabilidad por dicha información y acepto compartirla con otros usuarios y que tengo más de 16 años",
+      "save" : "Salvar",
+      "msg": {
+        "error" : "Complete lo que puede ayudar :)",
+        "success" : "¡Gracias por ser parte!",
+        "error_truth" : "Confirme la veracidad de los datos.",
+        "error_location" : "Necesitamos su ubicación, permitir y mover el PIN VERDE para actualizar",
+        "error_document" : "Por favor ingrese su número de identificación"
+      }
+    },
+    "sponsor" : "Gracias mapbox por patrocinar nuestro mapa"
+  },
+  "store": {
+    "title" : "Sus datos comerciales",
+    "form" : {
+      "subtitle" : "Mi negocio es:",
+      "name" : "Nombre de su negocio",
+      "owner" : "Nombre del dueño",
+      "address" : "Su dirección comercial",
+      "help" : {
+        "others" : "Otras",
+        "others_placeholder" : "Ingrese el tipo de su negocio",
+        "market" : "Mercado",
+        "mechanical" : "Servicios mecanicos",
+        "food" : "Restaurante / Panaderia",
+        "market_garden" : "Feira",
+        "health" : "Farmacia"
+      },
+      "available" : {
+        "title" : "Atención (oficina)",
+        "anytime" : "Todos los dias",
+        "week" : "Lunes a viernes",
+        "weekend" : "Solo fin de semana",
+        "anytime_hours" : "24 horas",
+        "expedient" : "horario comercial",
+        "delivery" : "Entregamos",
+        "others" : "Outros horários",
+        "others_placeholder" : "Ex: Lunes a viernes - 10h a 16h"
+      }
+    }
+  }
+}

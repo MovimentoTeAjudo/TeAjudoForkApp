@@ -1,0 +1,119 @@
+{
+  "menu" : {
+    "mapa" : "Map",
+    "sobre" : "About",
+    "seguranca" : "Stay Safe",
+    "handup" : "I can help",
+    "needup" : "Need help",
+    "marketup" : "I've a small business",
+    "mapup" : "Go to map",
+    "contato" : "Contact",
+    "voluntarios": "Volunteers"
+  },
+  "home": {
+    "map" : {
+      "location" : "use my location",
+      "search_area" : "Search this area",
+      "marker" : {
+        "esta_aqui" :  "You are here",
+        "drag" : "If necessary, drag the pin to another point!"
+      },
+      "popup" : {
+        "type_volunteer" : "Volunteer",
+        "type_user" : "Requester",
+        "type_doctor" : "Psychologist",
+        "talk_to" : "Talk to me by",
+        "phone" : "Phone",
+        "help_with" :  "I can help with",
+        "help_with_user" :  "I need help with",
+        "help" : {
+          "market" : "Market shopping",
+          "food" : "Give food",
+          "talk" : "Can i talk",
+          "talk_2" : "I Need to Talk",
+          "health" : "Go to the pharmacy",
+          "dog" : "Walk the dog"
+        }
+      }
+    }
+  },
+  "about": {
+    "title" : "About",
+    "text" : "<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>"
+  },
+  "sidebar": {
+    "title" : "Your personal data",
+    "total" : {
+      "requests" : "Requests",
+      "volunteers" : "Volunteers",
+      "small_business" : "Small Business"
+    },
+    "form" : {
+      "name" : "Your name",
+      "phone" : "Phone",
+      "input" : {
+        "example" : "Example",
+        "countrySelectorLabel" : "Code",
+        "countrySelectorError" : "Choose a code",
+        "phoneNumberLabel" : "Phone number"
+      },
+      "whatsapp" : "Can you chat by whatsapp?",
+      "email" : "E-mail",
+      "city":  "City",
+      "state" : "What's your state?",
+      "subtitle" : "I can help with:",
+      "subtitle_2" : "I need help with:",
+      "i_am_doctor": "I'm a psychologist",
+      "document" : "Please put your NPI",
+      "help" : {
+        "market" : "Market shopping",
+        "food" : "Give food",
+        "talk" : "Can i talk",
+        "talk_2" : "I Need to Talk",
+        "health" : "Go to the pharmacy",
+        "dog" : "Walk the dog",
+        "others" : "Other requests"
+      },
+      "truth": "I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users and that I am over 16 years old",
+      "save" : "Save",
+      "msg": {
+        "error" : "Complete what can help :)",
+        "success" : "Thank you for being part!",
+        "success_2" : "Soon someone will contact you, any questions call us on whatsapp!",
+        "error_truth" : "Confirm the veracity of the data.",
+        "error_location" : "We need your location, allow and move the GREEN PIN to update",
+        "error_document" : "Please put your NPI"
+      }
+    },
+    "sponsor" : "Thank you mapbox for the support and sponsorship on our map"
+  },
+  "store": {
+    "title" : "Your business data",
+    "form" : {
+      "subtitle" : "My business is:",
+      "name" : "Name of your business",
+      "owner" : "Owner name",
+      "address" : "Your business address",
+      "help" : {
+        "others" : "Others",
+        "others_placeholder" : "Enter the type of your business",
+        "market" : "Market",
+        "mechanical" : " Mechanic Services",
+        "food" : "Restaurant / Bakery",
+        "market_garden" : "Farmers Market",
+        "health" : "Drugstore"
+      },
+      "available" : {
+        "title" : "Business hours",
+        "anytime" : "Every day",
+        "week" : "Mon to Friday",
+        "weekend" : "Weekend only",
+        "anytime_hours" : "24 hours",
+        "expedient" : "business hours",
+        "delivery" : "We deliver",
+        "others" : "Other times",
+        "others_placeholder" : "Ex: Mon to Friday - 10pm to 4pm"
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "menu" : {
+    "mapa" : "Mapa",
+    "sobre" : "Sobre",
+    "seguranca" : "Segurança",
+    "handup" : "Posso ajudar",
+    "needup" : "Preciso de ajuda",
+    "marketup" : "Tenho um pequeno negócio",
+    "mapup" : "Ir ao mapa",
+    "contato" : "Contato",
+    "voluntarios": "Voluntários"
+  },
+  "home": {
+    "map" : {
+      "location" : "use minha localização",
+      "search_area" : "Pesquisar nesta área",
+      "marker" : {
+        "esta_aqui" :  "Você está aqui",
+        "drag" : "Arraste o pin para o ponto aproximado"
+      },
+      "popup" : {
+        "type_volunteer" : "Voluntário(a)",
+        "type_user" : "Solicitante",
+        "type_doctor" : "Psicólogo(a)",
+        "type_store" : "Pequeno Negócio",
+        "talk_to" : "Fale comigo por",
+        "phone" : "Telefone",
+        "help_with" :  "posso ajudar com",
+        "help_with_user" :  "preciso de ajuda com",
+        "help" : {
+          "market" : "Compras",
+          "food" : "Alimentação",
+          "talk" : "Posso conversar",
+          "talk_2" : "Preciso conversar",
+          "health" : "Farmácia",
+          "dog" : "Passear com o dog"
+        }
+      }
+    }
+  },
+  "about": {
+    "title" : "Sobre",
+    "text" : "<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr>  Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><p>Idealizado e desenvolvido por <a target='_blank' href='https://instagram.com/bruno.reiz'>Bruno Nunes.</a><br/><a target='_blank' href='https://instagram.com/teajudo.me'>Instagram Te Ajudo.</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>"
+  },
+  "sidebar": {
+    "title" : "Seus dados",
+    "total" : {
+      "requests" : "Pedidos",
+      "volunteers" : "Voluntários",
+      "small_business" : "Pequenos negócios",
+      "small_business_mobile" : "Peq. negócios"
+    },
+    "form" : {
+      "name" : "Seu nome",
+      "phone" : "Telefone",
+      "input" : {
+        "example" : "Exemplo",
+        "countrySelectorLabel" : "Código",
+        "countrySelectorError" : "Escolha um código",
+        "phoneNumberLabel" : "Número de telefone"
+      },
+      "whatsapp" : "Pode chamar via WhatsApp ?",
+      "email" : "E-mail",
+      "city":  "Cidade",
+      "state" : "Qual o seu estado",
+      "subtitle" : "Posso ajudar com:",
+      "subtitle_2" : "Preciso de ajuda com:",
+      "i_am_doctor": "Sou psicológo",
+      "document" : "EX: CRP - 03/121212",
+      "help" : {
+        "market" : "Compras",
+        "food" : "Alimentação",
+        "talk" : "Posso conversar",
+        "talk_2" : "Preciso conversar",
+        "health" : "Farmácia",
+        "dog" : "Passear com o dog",
+        "others" : "Outras solicitações"
+      },
+      "truth": "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários e que tenho mais de 16 anos de idade",
+      "save" : "Salvar",
+      "msg": {
+        "error" : "Preencha com o que você pode ajudar :)",
+        "error_2" : "Preencha seu horário de funcionamento :)",
+        "success" : "Obrigado por fazer parte",
+        "success_2" : "Em breve alguém entrara em contato, qualquer dúvida nos chame pelo whatsapp",
+        "error_truth" : "Por favor confirme a veracidade dos dados",
+        "error_location" : "Precisamos da sua localização, permita e mova o PIN VERDE para atualizar",
+        "error_document" : "Por favor, insira seu CRP/CFP"
+      }
+    },
+    "sponsor" : "Obrigado mapbox por patrocinar o nosso mapa"
+  },
+  "store": {
+    "title" : "Dados do seu negócio",
+    "form" : {
+      "subtitle" : "Meu negócio é:",
+      "name" : "Nome do seu negócio",
+      "owner" : "Nome do responsável",
+      "address" : "Endereço do seu negócio",
+      "help" : {
+        "others" : "Outros",
+        "others_placeholder" : "Ex: Pizzaria, Costura etc",
+        "market" : "Mercado",
+        "mechanical" : "Mecânica",
+        "food" : "Restaurante / Padaria",
+        "market_garden" : "Feira Livre / Horta",
+        "health" : "Farmácia"
+      },
+      "available" : {
+        "title" : "Horário de Funcionamento",
+        "title_2" : "Fazem entregas?",
+        "anytime" : "Todos os dias",
+        "week" : "Seg à Sexta",
+        "weekend" : "Fim de Semana",
+        "anytime_hours" : "24 Horas",
+        "expedient" : "9h ás 18h",
+        "delivery" : "Fazemos entregas",
+        "others" : "Outros horários?",
+        "others_placeholder" : "Ex: Seg à Sexta - 10h ás 15h"
+      }
+    }
+  }
+}
