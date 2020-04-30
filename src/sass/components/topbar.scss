@@ -1,16 +1,16 @@
 
 .small_business, .needhelp, .canhelp, .about,
 .staysafe,.m117_volunteer,.m117_donate,.m117_staysafe,.m117_howworks,.m117_about {
-  .bottombar {
+  .topbar {
     top: -80px;
     width: 100%;
   }
-  .bottombar--actions {
+  .topbar--actions {
     bottom: -200px;
   }
 }
 
-.bottombar {
+.topbar {
 
   background: $white;
   position: fixed;

@@ -1,18 +1,24 @@
 <template>
   <div class="">
-    <div class="bottombar--actions ">
+    <div class="topbar container">
+      <div class=" row align-items-center "  :class="{active:isActive}">
 
-      <div class="row">
-        <div class="col-10 text-center">
+        <div class="col-12 topbar-volunteers-count">
+          <div class="row no-gutters">
 
-
-          <router-link  class="btn btn-white" to="/negocio">
-            <span v-text="$ml.get('menu.marketup')"></span>
-          </router-link>
-
-        </div>
-        <div class="col-2 text-right">
-          <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
+            <router-link class="col-4" :to="{ name: 'List', params: {type:'store'} }">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/feira.png" width="16" alt="">
+                </div>
+                 <div class="col-6">
+                   <div class="stats">
+                     <span>{{getTotal('store')}}</span> <small>Produtores</small>
+                   </div>
+                 </div>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -26,11 +32,11 @@
 
 export default {
   props: ['address'],
-  name: 'BottomBar',
+  name: 'topbar',
   data() {
     return {
       isActive: false,
-      isMap: this.$router.currentRoute.name == 'home',
+      isMap: this.$router.currentRoute.name == 'map',
       isList: this.$router.currentRoute.name == 'List',
     }
   },
@@ -39,10 +45,6 @@ export default {
       'getMarkers',
       'getTotalMarkers',
     ]),
-  },
-  updated() {
-    console.log(this.isMap);
-    console.log(this.isList);
   },
   methods: {
     getTotal(type) {
@@ -58,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bottombar {
+.topbar {
   padding-top: 10px;
   padding-bottom: 10px;
   &.container {
@@ -66,7 +68,7 @@ export default {
     padding-right: 10px;
   }
 
-  .bottombar-volunteers-count {
+  .topbar-volunteers-count {
     .col-4 {
       padding-left: 5px;
       padding-right: 5px;

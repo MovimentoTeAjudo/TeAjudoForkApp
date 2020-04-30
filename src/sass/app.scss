@@ -152,4 +152,23 @@ body {
   .v-tour__target--highlighted {
     box-shadow: 0 0 0 4px rgb(56, 193, 114)!important;
   }
+
+  .shape-footer-mobile {
+    background: url(/images/shapes/shape-footer-mobile.png?c=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+  }
+  .shape-footer-desktop {
+    background: url(/images/shapes/shape-footer-desktop.png?c=1);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+  }
 }

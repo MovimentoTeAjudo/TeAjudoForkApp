@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="">
 
     <div class="">
 
@@ -13,9 +13,10 @@
 </template>
 
 <script>
-import AddStore from "@components/Adds/AddStore"
+import AddStore from "@components/Forms/AddStore"
 import EventBus from '@src/event-bus';
 export default {
+  name: 'store',
   components: {
     AddStore
   },

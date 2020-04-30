@@ -6,34 +6,21 @@
         <vs-avatar  size="70px" src="/images/teajudome.png"/>
       </div>
 
-      <vs-sidebar-item index="1" icon="map" to="/">
+      <vs-sidebar-item index="1" icon="home" to="/">
+        Home
+      </vs-sidebar-item>
+      <vs-sidebar-item index="1" icon="map" to="/map">
         Mapa
       </vs-sidebar-item>
       <vs-sidebar-item index="1" icon="list" to="/lista/store">
         Lista
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="2" icon="pan_tool" to="/preciso-de-ajuda">
-        <span v-text="$ml.get('menu.needup')"></span>
-      </vs-sidebar-item>
-
-      <vs-sidebar-item index="3" icon="favorite" to="/posso-ajudar">
-        <span v-text="$ml.get('menu.handup')"></span>
-      </vs-sidebar-item>
       <vs-sidebar-item index="4" icon="store" to="/negocio">
         <span v-text="$ml.get('menu.marketup')"></span>
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="2.1" icon="favorite" to="/movimento117">
-        <img src="/images/movimento/movimento.png" width="32" alt="">
-        &nbsp;&nbsp; #AmorEmMovimento
-      </vs-sidebar-item>
-      <vs-sidebar-item index="2.2" icon="store" to="/">
-        #CompreDoBairro #CompraDoPequeno
-      </vs-sidebar-item>
-      <vs-sidebar-item index="2.3" icon="house" to="/">
-        #VizinhoEuTeAjudo
-      </vs-sidebar-item>
+
 
       <vs-divider position="left"></vs-divider>
 
@@ -41,9 +28,6 @@
         Sobre
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="5" icon="done" to="/transparencia">
-        Transparência
-      </vs-sidebar-item>
 
       <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
         <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
@@ -58,11 +42,7 @@
         <vs-button  type="flat" target="_blank" href="https://instagram.com/teajudo.me">
           @teajudo.me
         </vs-button>
-        <vs-button color="primary" type="border">
-          <a @click="$ml.change('portuguese')" href="#">Português</a>
-          <a @click="$ml.change('english')" href="#">English</a>
-          <a @click="$ml.change('spanish')" href="#">Spanish</a>
-        </vs-button>
+
       </div>
 
     </vs-sidebar>

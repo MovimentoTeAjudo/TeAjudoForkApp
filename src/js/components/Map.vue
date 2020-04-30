@@ -7,7 +7,8 @@
         </a>
       </div>
     </div>
-    <MglMap
+    <div id="geocoder"></div>
+    <!-- <MglMap
       :accessToken="accessToken"
       :mapStyle.sync="mapStyle"
       :center="coordinates"
@@ -18,9 +19,9 @@
       :accessToken="accessToken"
       @result="handleResult"
       placeholder='Rua, Avenida'
+      input='Rua Luzitano Soares, 144'
     />
     <MglNavigationControl v-if="!isMobile" position="top-right" />
-    <!-- <MglGeolocateControl position="bottom-right" /> -->
 
 
     <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="#0eca4c">
@@ -34,13 +35,15 @@
         </div>
       </MglPopup>
     </MglMarker>
-  </MglMap>
+  </MglMap> -->
   </div>
 </template>
 
 <script>
 import { isMobile } from 'mobile-device-detect';
 import Mapbox from "mapbox-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+
 import {
   MglMap, MglPopup, MglMarker, MglAttributionControl,
   MglNavigationControl,
@@ -63,14 +66,21 @@ export default {
     MglGeolocateControl,
     MglGeocoderControl,
   },
-  created() {
+  mounted() {
     this.locateMe()
 
     this.mapbox = Mapbox;
-    this.mapboxgeocoder = MglGeocoderControl
+
+    var geocoder = new MapboxGeocoder({
+    accessToken: this.accessToken,
+    types: 'country,region,place,postcode,locality,neighborhood'
+    });
+    console.log(geocoder);
+    geocoder.addTo('#geocoder');
   },
   data() {
     return {
+      test: '',
       isMobile: isMobile,
       defaultInput: '',
       mapbox: undefined,

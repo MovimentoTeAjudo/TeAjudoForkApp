@@ -2,7 +2,7 @@
   <div class="content">
     <div class="container">
 
-      
+
 
       <div class="row justify-content-center">
         <div class="col-md-10 col-sm-12">
@@ -76,7 +76,6 @@
                 <vs-card class="">
                   <User :item="item" v-if="item.type == 'user'"></User>
                   <Store :item="item" v-if="item.type == 'store'"></Store>
-                  <Volunteer :item="item" v-if="item.type == 'volunteer'"></Volunteer>
                 </vs-card>
               </div>
             </div>
@@ -99,7 +98,6 @@ import 'vue-slider-component/theme/material.css'
 
 import User from '@components/List/User'
 import Store from '@components/List/Store'
-import Volunteer from '@components/List/Volunteer'
 
 export default {
   name: 'List',
@@ -109,7 +107,6 @@ export default {
     VueSlider,
     User,
     Store,
-    Volunteer,
     BounceLoader
   },
   data() {

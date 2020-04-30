@@ -3,16 +3,11 @@
   :class='{"sidebar-active":sidebarOpen}'>
 
     <div class="start" v-if="!startStep">
+      
     </div>
 
     <div class="" v-if="startStep">
-      <!-- <Topbar v-if="isMobile" /> -->
-
-      <SidebarMobile v-if="isMobile" />
-
       <router-view></router-view>
-
-      <BottomBar v-if="isMobile" />
       <Sidebar v-if="!isMobile" />
       <notifications group="foo" />
     </div>
@@ -21,16 +16,16 @@
 <script>
 import { isMobile } from 'mobile-device-detect';
 import Sidebar from '@components/Sidebar';
-import Topbar from '@components/Topbar';
 import BottomBar from '@components/BottomBar';
+import Topbar from '@components/Topbar';
 import SidebarMobile from '@components/SidebarMobile'
 
 export default {
   name: 'app',
   components: {
     Sidebar,
-    BottomBar,
     Topbar,
+    BottomBar,
     SidebarMobile
   },
   data() {

@@ -6,12 +6,10 @@ import VueBodyClass from 'vue-body-class';
 Vue.use(Router)
 
 import Home from '@views/Home'
+import Map from '@views/Map'
 import About from '@views/About'
 import StaySafe from '@views/StaySafe'
 import Store from '@views/Store'
-import NeedHelp from '@views/NeedHelp'
-import Volunteer from '@views/Volunteer'
-import Transparencia from '@views/Transparencia'
 import List from '@views/List'
 
 const baseRoutes = [
@@ -19,7 +17,13 @@ const baseRoutes = [
     path: '/',
     name: 'home',
     component: Home,
-    meta: { bodyClass: 'dashboard'  }
+    meta: { bodyClass: 'dashboard', layout: 'LayoutHome'  }
+  },
+  {
+    path: '/mapa',
+    name: 'home_map',
+    component: Map,
+    meta: { bodyClass: 'dashboard' }
   },
   {
     path: '/fique-seguro',
@@ -34,28 +38,10 @@ const baseRoutes = [
     meta: { bodyClass: 'about'  }
   },
   {
-    path: '/negocio',
+    path: '/novo-produtor',
     component : Store,
-    name: 'Negócio',
+    name: 'store',
     meta: { bodyClass: 'small_business'  }
-  },
-  {
-    path: '/preciso-de-ajuda',
-    component : NeedHelp,
-    name: 'Preciso de Ajuda',
-    meta: { bodyClass: 'needhelp'  }
-  },
-  {
-    path: '/posso-ajudar',
-    component : Volunteer,
-    name: 'Posso Ajudar',
-    meta: { bodyClass: 'canhelp'  }
-  },
-  {
-    path: '/transparencia',
-    component : Transparencia,
-    name: 'Transparencia',
-    meta: { bodyClass: 'canhelp'  }
   },
   {
     path: '/lista/:type',
@@ -66,10 +52,10 @@ const baseRoutes = [
   }
 ]
 
-import Movimento from './movimento'
-
+// import Movimento from './movimento'
+//
 const routes = baseRoutes.concat(
-  Movimento
+  //Movimento
 )
 
 const router = new Router({
