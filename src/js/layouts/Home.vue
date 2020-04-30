@@ -2,11 +2,11 @@
   <div class="wrapper"
   :class='{"sidebar-active":sidebarOpen}'>
 
-    <div class="start" v-if="!startStep">
-      
-    </div>
+    <!-- <div class="start" v-if="!startStep">
 
-    <div class="" v-if="startStep">
+    </div> -->
+
+    <div class="">
       <router-view></router-view>
       <Sidebar v-if="!isMobile" />
       <notifications group="foo" />

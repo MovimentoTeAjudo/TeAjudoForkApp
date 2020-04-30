@@ -2,10 +2,10 @@
   <div class="wrapper"
   :class='{"sidebar-active":sidebarOpen}'>
 
-    <div class="start" v-if="!startStep">
-    </div>
+    <!-- <div class="start" v-if="!startStep">
+    </div> -->
 
-    <div class="" v-if="startStep">
+    <div class="">
       <!-- <Topbar v-if="isMobile" /> -->
 
       <SidebarMobile v-if="isMobile" />
