@@ -4,7 +4,7 @@
 
         <swiper class="swiper" ref="mySwiper" :options="swiperOptions">
 
-          <swiper-slide>
+          <swiper-slide class="align-items-center">
             <div class="row justify-content-center text-center">
               <div class="col-12">
                 <div class="container">
@@ -30,7 +30,7 @@
                         </div>
 
                       </div>
-                      <div class="col-12 mt-xl-2">
+                      <div class="col-12 mt-xl-2 mt-4">
                         <div class="btn btn-block btn-info btn-next"
                           @click="nextStep"
                           :class="{'disabled':!info.support.owner || !info.phone}">
@@ -42,21 +42,18 @@
               </div>
             </div>
           </swiper-slide>
-          <swiper-slide>
+          <swiper-slide class="align-items-center">
             <div class="row justify-content-center text-center">
               <div class="col-12">
                 <div class="container">
-                  <h3>Agora os dados do seu negócio</h3>
+                  <h3 class="title">Agora os dados do seu negócio</h3>
                 </div>
               </div>
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-2">
                   <div class="container">
                     <div class="row justify-content-center">
                       <div class="col-12 text-left">
-                        <div class="form-group">
-                          <label for="">Nome do seu negócio</label>
-                           <input type="text" class="form-control" v-model="info.name" name="name"  required>
-                        </div>
+
                         <div class="row">
 
                           <div class="col">
@@ -105,15 +102,22 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-12 mt-xl-2">
+
+                    </div>
+
+                    <div class="row mt-xl-2 mt-4">
+                      <div class="col-6">
+                        <div class="btn btn-block btn-white btn-prev">
+                          Anterior
+                        </div>
+                      </div>
+                      <div class="col-6 ">
                         <div class="btn btn-block btn-info btn-next"
                           @click="nextStep"
                           :class="{'disabled':!info.address.number || !info.address.cep || !info.address.address || !info.address.city || !info.address.state}">
                           Próximo
                         </div>
-                        <div class="btn btn-block btn-white btn-prev">
-                          Anterior
-                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -121,77 +125,95 @@
             </div>
           </swiper-slide>
 
-          <swiper-slide>
+          <swiper-slide class="align-items-center">
             <div class="row justify-content-center text-center">
               <div class="col-12">
                 <div class="container">
-                  <h3>Como você se identifica</h3>
+                  <h3 class="title">Como você se identifica ?</h3>
                 </div>
               </div>
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-4">
                   <div class="container">
 
                     <div class="row justify-content-center">
+                      <div class="col-12">
+                        <div class="form-group">
+                           <input type="text" class="form-control" v-model="info.name" placeholder="Nome do seu negócio" name="name"  required>
+                        </div>
+                        <vs-divider />
+
+                      </div>
+
                       <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 text-left">
-                        <div class="row helps text-center">
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.agricultor_familiar}">
-                              <label for="agricultor_familiar" >
-                                <small>Agricultor Familiar</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar" id="agricultor_familiar" value="agricultor_familiar">
-                              </label>
+
+                        <div class="type_productor_wrapper">
+                          <div class="row helps type_productor text-center justify-content-center">
+                            <div class="col-6">
+                              <div class="help" :class="{active: info.support.agricultor_familiar}">
+                                <label for="agricultor_familiar" >
+                                  <small>Agricultor Familiar</small>
+                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar" id="agricultor_familiar" value="agricultor_familiar">
+                                </label>
+                              </div>
                             </div>
-                          </div>
 
 
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.agricultor_familiar_de_grupo}">
-                              <label for="agricultor_familiar_de_grupo" >
-                                <small>Agricultor Familiar de grupo ou comunidade</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar_de_grupo" id="agricultor_familiar_de_grupo" value="agricultor_familiar_de_grupo">
-                              </label>
+                            <div class="col-6">
+                              <div class="help" :class="{active: info.support.agricultor_familiar_de_grupo}">
+                                <label for="agricultor_familiar_de_grupo" >
+                                  <small>Agricultor Familiar Grupo/Comunidade</small>
+                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar_de_grupo" id="agricultor_familiar_de_grupo" value="agricultor_familiar_de_grupo">
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.agricultor_urbano}">
-                              <label for="agricultor_urbano" >
-                                <small>Agricultor Urbano</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.agricultor_urbano" id="agricultor_urbano" value="agricultor_urbano">
-                              </label>
+                            <div class="col-6">
+                              <div class="help" :class="{active: info.support.agricultor_urbano}">
+                                <label for="agricultor_urbano" >
+                                  <small>Agricultor Urbano</small>
+                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_urbano" id="agricultor_urbano" value="agricultor_urbano">
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.comerciante_de_produtos}">
-                              <label for="comerciante_de_produtos" >
-                                <small>Comerciante de produtos</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.comerciante_de_produtos" id="comerciante_de_produtos" value="comerciante_de_produtos">
-                              </label>
+                            <div class="col-6">
+                              <div class="help" :class="{active: info.support.comerciante_de_produtos}">
+                                <label for="comerciante_de_produtos" >
+                                  <small>Comerciante de produtos</small>
+                                  <input type="checkbox" name="support[]" v-model="info.support.comerciante_de_produtos" id="comerciante_de_produtos" value="comerciante_de_produtos">
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help featured" :class="{active: info.support.add_others}">
-                              <label for="others">
-                                <span class="icon-add-outline"></span>
-                                <small v-text="$ml.get('store.form.help.others')"></small>
-                                <input type="checkbox" name="support[]" v-model="info.support.add_others" id="others" value="others">
-                              </label>
+                            <div class="col-6">
+                              <div class="help add_others" :class="{active: info.support.add_others}">
+                                <label for="others">
+                                  <small v-text="$ml.get('store.form.help.others')"></small>
+                                  <input type="checkbox" name="support[]" v-model="info.support.add_others" id="others" value="others">
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-12" v-if="info.support.add_others">
-                            <div class="form-group">
-                              <input class="form-control" type="text" v-model="info.support.others" name="" placeholder="Insira aqui como você se identifica" value="">
+                            <div class="col-6" v-if="info.support.add_others">
+                              <div class="form-group">
+                                <input class="form-control" type="text" v-model="info.support.others" name="" placeholder="Insira aqui como você se identifica" value="">
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8">
-                        <div class="btn btn-block btn-info btn-next"
-                          @click="nextStep"
-                          :class="{'disabled':!info.support.agricultor_familiar && !info.support.agricultor_familiar_de_grupo && !info.support.agricultor_urbano && !info.support.comerciante_de_produtos && !info.support.others}">
-                          Próximo
-                        </div>
-                        <div class="btn btn-block btn-white btn-prev">
-                          Anterior
+                      <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-4">
+                        <div class="row">
+                          <div class="col-6">
+
+                            <div class="btn btn-block btn-white btn-prev">
+                              Anterior
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="btn btn-block btn-info btn-next"
+                              @click="nextStep"
+                              :class="{'disabled':!info.name || !info.support.agricultor_familiar && !info.support.agricultor_familiar_de_grupo && !info.support.agricultor_urbano && !info.support.comerciante_de_produtos && !info.support.others}">
+                              Próximo
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -200,22 +222,22 @@
             </div>
           </swiper-slide>
 
-          <swiper-slide>
-            <div class="row justify-content-center text-center">
+          <swiper-slide class="align-items-center">
+            <div class="row justify-content-center text-center available_time">
               <div class="col-12">
                 <div class="container">
-                  <h3>Quais dias e horários você atende ?</h3>
+                  <h3 class="title">Quais dias e horários você atende ?</h3>
                 </div>
               </div>
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-4">
-                  <div class="container">
+                  <div class="available_time--wrapper">
                     <div class="row justify-content-center">
                       <div class="col-12 text-left">
 
-                        <div class="row helps available_time text-center">
+                        <div class="row helps ">
                           <div class="col-12">
                             <div class="row">
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.monday}">
                                   <label for="available_days_monday" >
                                     <small>Seg</small>
@@ -223,7 +245,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.tuesday}">
                                   <label for="available_days_tuesday" >
                                     <small>Ter</small>
@@ -231,7 +253,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.wednesday}">
                                   <label for="available_days_wednesday" >
                                     <small>Qua</small>
@@ -239,7 +261,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.thursday}">
                                   <label for="available_days_thursday" >
                                     <small>Qui</small>
@@ -247,7 +269,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.friday}">
                                   <label for="available_days_friday" >
                                     <small>Sex</small>
@@ -255,7 +277,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.saturday}">
                                   <label for="available_days_saturday" >
                                     <small>Sáb</small>
@@ -263,7 +285,7 @@
                                   </label>
                                 </div>
                               </div>
-                              <div class="col">
+                              <div class="col-3">
                                 <div class="help" :class="{active: info.support.available.days.sunday}">
                                   <label for="available_days_sunday" >
                                     <small>Dom</small>
@@ -277,8 +299,8 @@
 
                         </div>
 
-                        <div class="row helps available_time text-center">
-                          <div class="col">
+                        <div class="row helps">
+                          <div class="col-6">
                             <div class="help" :class="{active: info.support.available.anytime_hours}">
                               <label for="available_anytime_hours" >
                                 <small v-text="$ml.get('store.form.available.anytime_hours')">24 horas</small>
@@ -286,7 +308,7 @@
                               </label>
                             </div>
                           </div>
-                          <div class="col">
+                          <div class="col-6">
                             <div class="help" :class="{active: info.support.available.expedient}">
                               <label for="available_expedient" >
                                 <small v-text="$ml.get('store.form.available.expedient')">9 ás 18h</small>
@@ -296,8 +318,8 @@
                           </div>
 
                         </div>
-                        <div class="row helps available_time text-center">
-                          <div class="col">
+                        <div class="row helps ">
+                          <div class="col-6">
                             <div class="help featured" :class="{active: info.support.available.add_others}">
                               <label for="available_others" >
                                 <small v-text="$ml.get('store.form.available.others')">Outro horário?</small>
@@ -306,7 +328,7 @@
                             </div>
                           </div>
 
-                          <div class="col">
+                          <div class="col-6">
                             <div class="help" :class="{active: info.support.available.delivery}">
                               <label for="available_delivery" >
                                 <small v-text="$ml.get('store.form.available.delivery')">Delivery</small>
@@ -322,7 +344,15 @@
                         </div>
 
                       </div>
-                      <div class="col-12">
+
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-6">
+                        <div class="btn btn-block btn-white btn-prev">
+                          Anterior
+                        </div>
+                      </div>
+                      <div class="col-6">
                         <div class="btn btn-block btn-info btn-next"
                           @click="nextStep"
                           :class="{
@@ -337,9 +367,7 @@
                             || (!info.support.available.anytime_hours && !info.support.available.expedient && !info.support.available.others)}">
                           Próximo
                         </div>
-                        <div class="btn btn-block btn-white btn-prev">
-                          Anterior
-                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -347,136 +375,137 @@
             </div>
           </swiper-slide>
 
-          <swiper-slide>
-            <div class="row justify-content-center text-center">
+          <swiper-slide class="align-items-center">
+            <div class="row justify-content-center text-center products">
               <div class="col-12">
                 <div class="container">
-                  <h3>Quais os seus produtos?</h3>
-                  <small>Pode selecionar mais de um</small>
+                  <h3 class="title">Quais os seus produtos?</h3>
+                  <small class="subtitle">Pode selecionar mais de um</small>
                 </div>
               </div>
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-4">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-6 text-center">
-                        <div class="row helps available_time">
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.castanhas}">
-                              <label for="castanhas">
-                                <small>Castanhas e sementes</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.castanhas" id="castanhas" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.cereais}">
-                              <label for="cereais">
-                                <small>cereais</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.cereais" id="cereais" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.ervas}">
-                              <label for="ervas">
-                                <small>Ervas e temperos</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.ervas" id="ervas" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.frutas}">
-                              <label for="frutas">
-                                <small>Frutas</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.frutas" id="frutas" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.hortalicas}">
-                              <label for="hortalicas">
-                                <small>Hortaliças (folhosas, verduras, legumes, etc..)</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.hortalicas" id="hortalicas" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.laticinios}">
-                              <label for="laticinios">
-                                <small>Laticínios</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.laticinios" id="laticinios" value="">
-                              </label>
-                            </div>
-                          </div>
+                  <div class="products--wrapper">
+                    <div class="row helps no-gutters justify-content-center">
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.castanhas}">
+                          <label for="castanhas">
+                            <small>Castanhas e sementes</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.castanhas" id="castanhas" value="">
+                          </label>
                         </div>
                       </div>
-                      <div class="col-6 text-center">
-                        <div class="row helps available_time">
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.mel}">
-                              <label for="mel">
-                                <small>Mel</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.mel" id="mel" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.ovos}">
-                              <label for="ovos">
-                                <small>Ovos</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.ovos" id="ovos" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.carnes}">
-                              <label for="carnes">
-                                <small>Carnes (suína, bovina, aves)</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.carnes" id="carnes" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.pescados}">
-                              <label for="pescados">
-                                <small>Pescados</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.pescados" id="pescados" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.panificados}">
-                              <label for="panificados">
-                                <small>Panificados (pães, bolos, tortas, etc)</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.panificados" id="panificados" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.plantas}">
-                              <label for="plantas">
-                                <small>Plantas Alimentícias Não Convencionais (PANC)</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.plantas" id="plantas" value="">
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="help" :class="{active: info.support.products.add_others}">
-                              <label for="add_others">
-                                <small>Outros</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.products.add_others" id="add_others" value="">
-                              </label>
-                            </div>
-                          </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.cereais}">
+                          <label for="cereais">
+                            <small>Cereais</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.cereais" id="cereais" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.ervas}">
+                          <label for="ervas">
+                            <small>Ervas e temperos</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.ervas" id="ervas" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.frutas}">
+                          <label for="frutas">
+                            <small>Frutas</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.frutas" id="frutas" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.hortalicas}">
+                          <label for="hortalicas">
+                            <small>Hortaliças (folhosas, verduras, legumes, etc..)</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.hortalicas" id="hortalicas" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.laticinios}">
+                          <label for="laticinios">
+                            <small>Laticínios</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.laticinios" id="laticinios" value="">
+                          </label>
+                        </div>
+                      </div>
 
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.mel}">
+                          <label for="mel">
+                            <small>Mel</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.mel" id="mel" value="">
+                          </label>
                         </div>
                       </div>
-                      <div class="col-12" v-if="info.support.products.add_others">
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.ovos}">
+                          <label for="ovos">
+                            <small>Ovos</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.ovos" id="ovos" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.carnes}">
+                          <label for="carnes">
+                            <small>Carnes (suína, bovina, aves)</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.carnes" id="carnes" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.pescados}">
+                          <label for="pescados">
+                            <small>Pescados</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.pescados" id="pescados" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.panificados}">
+                          <label for="panificados">
+                            <small>Panificados (pães, bolos, tortas, etc)</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.panificados" id="panificados" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.plantas}">
+                          <label for="plantas">
+                            <small>Plantas Alimentícias Não Convencionais (PANC)</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.plantas" id="plantas" value="">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="help" :class="{active: info.support.products.add_others}">
+                          <label for="add_others">
+                            <small>Outros</small>
+                            <input type="checkbox" name="support[]" v-model="info.support.products.add_others" id="add_others" value="">
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-6" v-if="info.support.products.add_others">
                         <div class="form-group">
                           <input type="text" class="form-control"  v-model="info.support.products.others" value="">
                         </div>
                       </div>
-                      <div class="col-12">
+                    </div>
+
+                    <div class="row mt-4">
+                      <div class="col-6">
+                        <div class="btn btn-block btn-white btn-prev">
+                          Anterior
+                        </div>
+                      </div>
+                      <div class="col-6">
                         <div class="btn btn-block btn-info btn-next"
                           @click="nextStep"
                           :class="{
@@ -496,9 +525,6 @@
                             && !info.support.products.others}">
                           Próximo
                         </div>
-                        <div class="btn btn-block btn-white btn-prev">
-                          Anterior
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -506,53 +532,63 @@
             </div>
           </swiper-slide>
 
-          <swiper-slide>
+          <swiper-slide class="align-items-center organic">
             <div class="row justify-content-center text-center">
               <div class="col-12">
                 <div class="container">
-                  <small>Já estamos acabando... </small>
-                  <h3>Você produz orgânicos?</h3>
+                  <h3 class="title">Você produz orgânicos?</h3>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8">
-                <div class="row helps mt-xl-4 text-center">
-                  <div class="col-4">
-                    <div class="help" :class="{active: info.support.products.organic}">
-                      <label for="organic">
-                        <small>Sim</small>
-                        <input type="checkbox" name="support[]" v-model="info.support.products.organic" id="organic" value="">
-                      </label>
+              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-4">
+                <div class="organic--wrapper">
+                  <div class="row helps mt-xl-4 text-center">
+                    <div class="col-4">
+                      <div class="help" :class="{active: info.support.products.organic}">
+                        <label for="organic">
+                          <small>Sim</small>
+                          <input type="checkbox" name="support[]" v-model="info.support.products.organic" id="organic" value="">
+                        </label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="help" :class="{active: info.support.products.in_transition}">
-                      <label for="in_transition">
-                        <small>Em transição</small>
-                        <input type="checkbox" name="support[]" v-model="info.support.products.in_transition" id="in_transition" value="">
-                      </label>
+                    <div class="col-4">
+                      <div class="help" :class="{active: info.support.products.in_transition}">
+                        <label for="in_transition">
+                          <small>Em transição</small>
+                          <input type="checkbox" name="support[]" v-model="info.support.products.in_transition" id="in_transition" value="">
+                        </label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="help" :class="{active: info.support.products.no_organic}">
-                      <label for="no_organic">
-                        <small>Não</small>
-                        <input type="checkbox" name="support[]" v-model="info.support.products.no_organic" id="no_organic" value="">
-                      </label>
+                    <div class="col-4">
+                      <div class="help" :class="{active: info.support.products.no_organic}">
+                        <label for="no_organic">
+                          <small>Não</small>
+                          <input type="checkbox" name="support[]" v-model="info.support.products.no_organic" id="no_organic" value="">
+                        </label>
+                      </div>
                     </div>
-                  </div>
 
+                  </div>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-xl-5">
-                <div class="container">
-                  <div class="form-group">
-                    <label class="check_truth checklabel" for="veracidade">
-                      <small v-text="$ml.get('sidebar.form.truth')"></small>
-                      <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
-                    </label>
+              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-xl-5 mt-4">
+                <div class="organic--wrapper">
+                  <div class="helps">
+                    <div class="help veracidade form-group"  :class="{active: info.support.veracidade}">
+                      <label class="check_truth checklabel" for="veracidade">
+                        <small v-text="$ml.get('sidebar.form.truth')"></small>
+                        <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
+                      </label>
+                    </div>
                   </div>
-                  <div class="form-group text-right">
-                    <button @click="onSubmit" class="btn btn-block btn-info" :disabled="!info.support.veracidade"  :class="{'disabled':!info.support.veracidade}" name="button">Salvar</button>
+                  <div class="form-group text-right mt-4">
+                    <button @click="onSubmit" class="btn btn-block btn-info"
+                    :disabled="!info.support.veracidade"
+                    :class="{
+                      'disabled':!info.support.veracidade
+                      && !info.support.products.organic
+                      && !info.support.products.in_transition
+                      && !info.support.products.no_organic
+                      }" name="button">Salvar</button>
                   </div>
                 </div>
               </div>
@@ -764,72 +800,10 @@ export default {
         document.querySelector('[data-uf='+cepData.uf+']').setAttribute('selected','selected')
         this.info.address.state = document.querySelector('[data-uf='+cepData.uf+']').value
         this.getCities(false, cepData.localidade)
-
       }
     }
 }
 </script>
 <style lang="scss">
-  .swiper {
-    height: 100vh;
-    width: 100%;
 
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-weight: bold;
-      font-size: 20px;
-      padding: 0 15px;
-
-      .helps {
-        .help {
-          background: transparent;
-          color: #6584b2;
-          &.active {
-            background: #3fb567;
-            color: #fff;
-          }
-
-          margin-bottom: 5px;
-          label {
-            padding: 5px;
-            line-height: 18px;
-            display:block;
-          }
-        }
-        &.available_time {
-          .col {
-            padding-left: 4px;
-            padding-right: 4px;
-            .help {
-
-            }
-          }
-        }
-      }
-
-      p {
-        font-weight: 300;
-        font-size: 16px;
-      }
-
-      .disabled {
-        pointer-events: none;
-      }
-
-      .form-group {
-        margin-bottom: 5px;
-        label {
-          font-size: 14px;
-          margin-bottom: 5px;
-        }
-        small {
-          font-size: 12px
-        }
-      }
-
-    }
-  }
 </style>

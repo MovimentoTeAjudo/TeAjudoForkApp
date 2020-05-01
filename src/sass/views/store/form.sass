@@ -1,0 +1,55 @@
+@import 'steps/products'
+@import 'steps/type_productor'
+@import 'steps/available_time'
+@import 'steps/organic'
+
+.swiper
+  height: 100vh
+  width: 100%
+
+  .swiper-slide
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    text-align: center
+    font-weight: bold
+    font-size: 20px
+    padding: 30px 15px
+    height: 100vh
+
+    .container
+      line-height: 15px
+      .title
+
+      .subtitle
+        color: #868686
+
+    .helps
+      .help
+        color: #3f5c88
+        &.active
+          background: #3fb567
+          color: #fff
+        margin-bottom: 5px
+        label
+          padding: 0
+          line-height: 15px
+          display: block
+          small
+            font-size: 12px
+
+    p
+      font-weight: 300
+      font-size: 16px
+
+    .disabled
+      pointer-events: none
+
+    .form-group
+      margin-bottom: 10px
+      label
+        font-size: 14px
+        margin-bottom: 5px
+
+      small
+        font-size: 12px
