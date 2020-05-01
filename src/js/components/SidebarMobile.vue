@@ -1,23 +1,23 @@
 <template>
    <div ref="parentSidebar">
-     <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-right  color="primary" class="sidebarx" spacer >
+     <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-right  color="success" :reduce="reduce" :reduce-not-hover-expand="notExpand" class="sidebarx" spacer >
 
       <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src="/images/teajudome.png"/>
+        <vs-avatar  size="70px" src="/images/farmer/logo.png"/>
       </div>
 
       <vs-sidebar-item index="1" icon="home" to="/">
         Home
       </vs-sidebar-item>
-      <vs-sidebar-item index="1" icon="map" to="/map">
+      <vs-sidebar-item index="2" icon="map" to="/mapa">
         Mapa
       </vs-sidebar-item>
-      <vs-sidebar-item index="1" icon="list" to="/lista/store">
+      <vs-sidebar-item index="3" icon="list" to="/lista/store">
         Lista
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="4" icon="store" to="/negocio">
-        <span v-text="$ml.get('menu.marketup')"></span>
+      <vs-sidebar-item index="4" icon="store" to="/novo-produtor">
+        Sou um produtor
       </vs-sidebar-item>
 
 
@@ -32,16 +32,16 @@
       <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
         <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
       </vs-sidebar-item>
-      <vs-sidebar-item index="5" icon="system_update" @click="updateApp">
+      <vs-sidebar-item index="7" icon="system_update" @click="updateApp">
         Atualizar App
       </vs-sidebar-item>
 
 
 
       <div class="footer-sidebar" slot="footer">
-        <vs-button  type="flat" target="_blank" href="https://instagram.com/teajudo.me">
-          @teajudo.me
-        </vs-button>
+        <vs-sidebar-item index="7" icon="keyboard_arrow_left">
+          Open
+        </vs-sidebar-item>
 
       </div>
 

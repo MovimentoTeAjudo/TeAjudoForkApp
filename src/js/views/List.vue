@@ -14,14 +14,9 @@
               <div class="row no-gutters p-2">
                 <div class="col-12">
                   <router-link class="btn btn-white"
-                  :class="{'btn-active':isActive('user')}"
-                  :to="{ name: 'List', params: { type:'user' } }">Pedidos</router-link>
-                  <router-link class="btn btn-white"
                   :class="{'btn-active':isActive('store')}"
-                  :to="{ name: 'List', params: { type:'store' } }">Pequenos Negócios</router-link>
-                  <router-link class="btn btn-white"
-                  :class="{'btn-active':isActive('volunteer')}"
-                  :to="{ name: 'List', params: { type:'volunteer' } }">Voluntários</router-link>
+                  :to="{ name: 'List', params: { type:'store' } }">Produtores</router-link>
+
                 </div>
               </div>
               <div class="row no-gutters p-2">
@@ -34,10 +29,6 @@
               <div class="row no-gutters" v-if="type == 'store'">
                 <div class="col-12">
                   <button class="btn btn-img filter-by-activity" data-activity='market_garden'  @click="filterActive('market_garden')" :class="{'btn-active':filter.market_garden}" ><img src="/images/feira.png" width="30" alt="">Feira/Produtor</button>
-                  <button class="btn btn-img filter-by-activity" data-activity='mechanical' @click="filterActive('mechanical')" :class="{'btn-active':filter.mechanical}" ><img src="/images/carro.png" width="30" alt="">Mecânica</button>
-                  <button class="btn btn-img filter-by-activity" data-activity='market' @click="filterActive('market')" :class="{'btn-active':filter.market}"><img src="/images/supermercado.png" width="30" alt="">Mercado</button>
-                  <button class="btn btn-img filter-by-activity" data-activity='health' @click="filterActive('health')" :class="{'btn-active':filter.health}"><img src="/images/farmacia.png" width="30" alt="">Farmácia</button>
-                  <button class="btn btn-img filter-by-activity" data-activity='food' @click="filterActive('food')" :class="{'btn-active':filter.food}"><img src="/images/comercio.png" width="30" alt="">Outros comércios</button>
                 </div>
               </div>
             </div>
@@ -225,7 +216,7 @@ export default {
 
     getLabelType(){
       const types = {
-        'store' : 'Pequenos Negócios',
+        'store' : 'Produtores',
         'user'  : 'Pedidos de ajuda',
         'volunteer' : 'Voluntários'
       }

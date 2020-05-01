@@ -3,15 +3,15 @@
     <div class="bottombar--actions ">
 
       <div class="row">
-        <div class="col-10 text-center">
+        <div class="col-9 text-center">
 
 
-          <router-link  class="btn btn-white" to="/negocio">
-            <span v-text="$ml.get('menu.marketup')"></span>
+          <router-link  class="btn btn-white" to="/novo-produtor">
+            <span>Sou um produtor</span>
           </router-link>
 
         </div>
-        <div class="col-2 text-right">
+        <div class="col-3 text-right">
           <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
         </div>
       </div>
