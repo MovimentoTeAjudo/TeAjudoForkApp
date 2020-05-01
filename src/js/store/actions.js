@@ -8,7 +8,7 @@ import axios from 'axios'
  * User
  */
 export const actionGetAllUsers = ({ commit }, obj) => {
-  return axios.get(window.config[env].api_url + '/api', {
+  return axios.get(window.config.api_url + '/api', {
     params:{
       lat: obj.location.lat,
       lng: obj.location.lng,
