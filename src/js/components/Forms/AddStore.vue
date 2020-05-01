@@ -11,7 +11,7 @@
                   <h3>Primeiro precisamos de alguns dados pessoais</h3>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-4">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4">
                   <div class="container">
                     <div class="row justify-content-center">
                       <div class="col-12 text-left">
@@ -49,7 +49,7 @@
                   <h3 class="title">Agora os dados do seu negócio</h3>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-2">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4">
                   <div class="container">
                     <div class="row justify-content-center">
                       <div class="col-12 text-left">
@@ -132,7 +132,7 @@
                   <h3 class="title">Como você se identifica ?</h3>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-4">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4">
                   <div class="container">
 
                     <div class="row justify-content-center">
@@ -232,7 +232,7 @@
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-4">
                   <div class="available_time--wrapper">
                     <div class="row justify-content-center">
-                      <div class="col-12 text-left">
+                      <div class="col-12 text-center">
 
                         <div class="row helps ">
                           <div class="col-12">
@@ -383,7 +383,7 @@
                   <small class="subtitle">Pode selecionar mais de um</small>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-4">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4">
                   <div class="products--wrapper">
                     <div class="row helps no-gutters justify-content-center">
                       <div class="col-6">
@@ -539,7 +539,7 @@
                   <h3 class="title">Você produz orgânicos?</h3>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-4">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4">
                 <div class="organic--wrapper">
                   <div class="row helps mt-xl-4 text-center">
                     <div class="col-4">
@@ -570,7 +570,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6 mt-xl-5 mt-4">
+              <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-xl-5 mt-4">
                 <div class="organic--wrapper">
                   <div class="helps">
                     <div class="help veracidade form-group"  :class="{active: info.support.veracidade}">
@@ -637,6 +637,7 @@ export default {
         states: States,
         cities: false,
         timeoutSearchCep: false,
+
         info: {
           address: {},
           member: 'volunteer',
@@ -674,8 +675,8 @@ export default {
         return this.$refs.mySwiper.$swiper
       }
     },
-    mounted() {
-      console.log('Current Swiper instance object', this.swiper)
+    updated() {
+      document.querySelector('.swiper-slide').style.height = document.documentElement.clientHeight
     },
     methods: {
       ...mapGetters([
@@ -687,7 +688,6 @@ export default {
       ]),
 
       async onSubmit() {
-        console.log('a');
 
         if(!this.info.support.veracidade) {
           this.$notify({
