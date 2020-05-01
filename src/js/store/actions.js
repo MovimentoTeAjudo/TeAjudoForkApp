@@ -1,8 +1,5 @@
 import * as mutations from './mutation-types';
 import axios from 'axios'
-import config from '@src/config'
-
-const env = 'dev'
 
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
@@ -11,7 +8,7 @@ const env = 'dev'
  * User
  */
 export const actionGetAllUsers = ({ commit }, obj) => {
-  return axios.get(config[env].api_url + '/api', {
+  return axios.get(window.config[env].api_url + '/api', {
     params:{
       lat: obj.location.lat,
       lng: obj.location.lng,
