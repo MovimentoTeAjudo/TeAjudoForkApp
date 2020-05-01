@@ -663,7 +663,12 @@ export default {
           return;
         }
 
-        const payload = await axios.post(window.config.api_url+'/api/save', this.info)
+        const payload = await axios.post(window.config.api_url+'/api/save', this.info, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+          },
+        })
 
         if(payload.data.status) {
 
@@ -718,7 +723,14 @@ export default {
         this.info.location.lng = v.geometry.coordinates[0]
       },
       async getCities(v, select) {
-        const payload = await axios.get(window.config.api_url+'/api/cities', {params: { uf_id: this.info.address.state }})
+        const payload = await axios.get(window.config.api_url+'/api/cities',
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+          },
+          params: { uf_id: this.info.address.state }
+        })
         this.cities = payload.data.data
 
         setTimeout(()=>{

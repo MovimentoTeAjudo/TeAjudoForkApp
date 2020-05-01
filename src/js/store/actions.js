@@ -9,6 +9,10 @@ import axios from 'axios'
  */
 export const actionGetAllUsers = ({ commit }, obj) => {
   return axios.get(window.config.api_url + '/api', {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
     params:{
       lat: obj.location.lat,
       lng: obj.location.lng,
