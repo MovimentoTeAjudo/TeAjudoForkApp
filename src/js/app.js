@@ -5,7 +5,7 @@ import { sync } from 'vuex-router-sync';
 
 import './registerServiceWorker'
 
-let env = window.location.host.includes('localhost') ? 'dev' : 'prd'
+let env = window.location.host.includes('localhost') ? 'dev' : 'production'
 import config from '@src/config'
 window.config = config[env]
 
