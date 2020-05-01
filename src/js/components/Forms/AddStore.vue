@@ -761,10 +761,6 @@ export default {
       async getCities(v, select) {
         const payload = await axios.get(window.config.api_url+'/api/cities',
         {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
           params: { uf_id: this.info.address.state }
         })
         this.cities = payload.data.data
