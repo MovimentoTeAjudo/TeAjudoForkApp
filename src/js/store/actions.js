@@ -1,5 +1,5 @@
 import * as mutations from './mutation-types';
-import axios from 'axios'
+
 
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */

@@ -698,7 +698,7 @@ export default {
           return;
         }
 
-        const payload = await this.$http.post(window.config.api_url+'/api/save/', this.info, {
+        const payload = await this.$http.post(window.config.api_url+'/api/save', this.info, {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
@@ -758,7 +758,7 @@ export default {
         this.info.location.lng = v.geometry.coordinates[0]
       },
       async getCities(v, select) {
-        const payload = await this.$http.get(window.config.api_url+'/api/cities/',
+        const payload = await this.$http.get(window.config.api_url+'/api/cities',
         {
           headers: {
             'Access-Control-Allow-Origin': '*',
