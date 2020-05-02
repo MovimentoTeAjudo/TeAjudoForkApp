@@ -1,5 +1,5 @@
 import * as mutations from './mutation-types';
-
+import axios from 'axios'
 
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
@@ -8,7 +8,11 @@ import * as mutations from './mutation-types';
  * User
  */
 export const actionGetAllUsers = ({ commit }, obj) => {
-  return this.$http.get(window.config.api_url + '/api', {
+  return axios.post(window.config.api_url + '/api', {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
     params:{
       lat: obj.location.lat,
       lng: obj.location.lng,
