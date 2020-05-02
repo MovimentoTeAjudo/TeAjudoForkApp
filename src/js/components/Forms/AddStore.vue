@@ -605,7 +605,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { isMobile } from 'mobile-device-detect';
 
@@ -779,7 +779,7 @@ export default {
         this.timeoutSearchCep = setTimeout(_this.getDataViaCep, 1000);
       },
       async getDataViaCep() {
-        const payload = await this.$http.get('https://viacep.com.br/ws/'+this.info.address.cep+'/json')
+        const payload = await axios.get('https://viacep.com.br/ws/'+this.info.address.cep+'/json')
 
         if(payload.data.erro) {
           this.$notify({

@@ -11,8 +11,8 @@ window.config = config[env]
 
 
 import axios from 'axios'
-// axios.defaults.headers.common['Content-Type'] ='application/json;charset=utf-8';
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Content-Type'] ='application/json;charset=utf-8';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 Vue.prototype.$http = axios
 
