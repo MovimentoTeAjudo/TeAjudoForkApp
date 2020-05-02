@@ -9,6 +9,13 @@ let env = window.location.host.includes('localhost') ? 'dev' : 'production'
 import config from '@src/config'
 window.config = config[env]
 
+
+import axios from 'axios'
+axios.defaults.headers.common['Content-Type'] ='application/json;charset=utf-8';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
+Vue.prototype.$http = axios
+
 import router from './routers/index'
 import * as VueGoogleMaps from "vue2-google-maps";
 import { VueReCaptcha } from 'vue-recaptcha-v3'
