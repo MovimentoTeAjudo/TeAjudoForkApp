@@ -758,7 +758,7 @@ export default {
         this.info.location.lng = v.geometry.coordinates[0]
       },
       async getCities(v, select) {
-        const payload = await this.$http.get(window.config.api_url+'/api/cities',
+        const payload = await this.$http.get(window.config.api_url+'/api/cities/',
         {
           params: { uf_id: this.info.address.state }
         })
