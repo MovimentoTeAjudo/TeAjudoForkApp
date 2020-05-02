@@ -605,7 +605,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { isMobile } from 'mobile-device-detect';
 
@@ -698,7 +698,7 @@ export default {
           return;
         }
 
-        const payload = await this.$http.post(window.config.api_url+'/api/save', this.info, {
+        const payload = await this.$http.post(window.config.api_url+'/api/save/', this.info, {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
@@ -760,6 +760,10 @@ export default {
       async getCities(v, select) {
         const payload = await this.$http.get(window.config.api_url+'/api/cities/',
         {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+          },
           params: { uf_id: this.info.address.state }
         })
         this.cities = payload.data.data
@@ -779,7 +783,7 @@ export default {
         this.timeoutSearchCep = setTimeout(_this.getDataViaCep, 1000);
       },
       async getDataViaCep() {
-        const payload = await axios.get('https://viacep.com.br/ws/'+this.info.address.cep+'/json/')
+        const payload = await this.$http.get('https://viacep.com.br/ws/'+this.info.address.cep+'/json')
 
         if(payload.data.erro) {
           this.$notify({
