@@ -18,7 +18,7 @@
 
                         <div class="form-group">
                           <label for="">Seu nome *</label>
-                           <input type="text" class="form-control" v-model="info.support.owner" name="owner" placeholder="Seu nome"  required>
+                           <input autocomplete="off" type="text" class="form-control" v-model="info.support.owner" name="owner" placeholder="Seu nome"  required>
                         </div>
                         <div class="form-group">
                           <label for="">Seu telefone *</label>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                           <label for="">Seu melhor e-mail</label>
-                           <input type="email" class="form-control" v-model="info.email" name="creditcard" :placeholder="$ml.get('sidebar.form.email')">
+                           <input autocomplete="off" type="email" class="form-control" v-model="info.email" name="creditcard" :placeholder="$ml.get('sidebar.form.email')">
                         </div>
 
                       </div>
@@ -59,7 +59,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label for="">CEP *</label>
-                               <input type="number" minlength="8" maxlength="8" @keyup="getAddressByCep" class="form-control" v-model="info.address.cep">
+                               <input autocomplete="off" type="number" minlength="8" maxlength="8" @keyup="getAddressByCep" class="form-control" v-model="info.address.cep">
                                <small>Apenas números</small>
                             </div>
                           </div>
@@ -88,7 +88,7 @@
                           <div class="col-4">
                             <div class="form-group">
                               <label for="">Número *</label>
-                               <input type="number" class="form-control" v-model="info.address.number" name="" value="">
+                               <input autocomplete="off" type="number" class="form-control" v-model="info.address.number" name="" value="">
                             </div>
                           </div>
                           <div class="col">
@@ -138,7 +138,7 @@
                     <div class="row justify-content-center">
                       <div class="col-12">
                         <div class="form-group">
-                           <input type="text" class="form-control" v-model="info.name" placeholder="Nome do seu negócio" name="name"  required>
+                           <input autocomplete="off" type="text" class="form-control" v-model="info.name" placeholder="Nome do seu negócio" name="name"  required>
                         </div>
                         <vs-divider />
 
@@ -152,7 +152,7 @@
                               <div class="help" :class="{active: info.support.agricultor_familiar}">
                                 <label for="agricultor_familiar" >
                                   <small>Agricultor Familiar</small>
-                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar" id="agricultor_familiar" value="agricultor_familiar">
+                                  <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.agricultor_familiar" id="agricultor_familiar" value="agricultor_familiar">
                                 </label>
                               </div>
                             </div>
@@ -162,7 +162,7 @@
                               <div class="help" :class="{active: info.support.agricultor_familiar_de_grupo}">
                                 <label for="agricultor_familiar_de_grupo" >
                                   <small>Agricultor Familiar Grupo/Comunidade</small>
-                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_familiar_de_grupo" id="agricultor_familiar_de_grupo" value="agricultor_familiar_de_grupo">
+                                  <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.agricultor_familiar_de_grupo" id="agricultor_familiar_de_grupo" value="agricultor_familiar_de_grupo">
                                 </label>
                               </div>
                             </div>
@@ -170,7 +170,7 @@
                               <div class="help" :class="{active: info.support.agricultor_urbano}">
                                 <label for="agricultor_urbano" >
                                   <small>Agricultor Urbano</small>
-                                  <input type="checkbox" name="support[]" v-model="info.support.agricultor_urbano" id="agricultor_urbano" value="agricultor_urbano">
+                                  <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.agricultor_urbano" id="agricultor_urbano" value="agricultor_urbano">
                                 </label>
                               </div>
                             </div>
@@ -178,7 +178,7 @@
                               <div class="help" :class="{active: info.support.comerciante_de_produtos}">
                                 <label for="comerciante_de_produtos" >
                                   <small>Comerciante de produtos</small>
-                                  <input type="checkbox" name="support[]" v-model="info.support.comerciante_de_produtos" id="comerciante_de_produtos" value="comerciante_de_produtos">
+                                  <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.comerciante_de_produtos" id="comerciante_de_produtos" value="comerciante_de_produtos">
                                 </label>
                               </div>
                             </div>
@@ -186,13 +186,13 @@
                               <div class="help add_others" :class="{active: info.support.add_others}">
                                 <label for="others">
                                   <small v-text="$ml.get('store.form.help.others')"></small>
-                                  <input type="checkbox" name="support[]" v-model="info.support.add_others" id="others" value="others">
+                                  <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.add_others" id="others" value="others">
                                 </label>
                               </div>
                             </div>
                             <div class="col-6" v-if="info.support.add_others">
                               <div class="form-group">
-                                <input class="form-control" type="text" v-model="info.support.others" name="" placeholder="Insira aqui como você se identifica" value="">
+                                <input autocomplete="off" class="form-control" type="text" v-model="info.support.others" name="" placeholder="Insira aqui como você se identifica" value="">
                               </div>
                             </div>
                           </div>
@@ -241,7 +241,7 @@
                                 <div class="help" :class="{active: info.support.available.days.monday}">
                                   <label for="available_days_monday" >
                                     <small>Seg</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.monday" id="available_days_monday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.monday" id="available_days_monday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -249,7 +249,7 @@
                                 <div class="help" :class="{active: info.support.available.days.tuesday}">
                                   <label for="available_days_tuesday" >
                                     <small>Ter</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.tuesday" id="available_days_tuesday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.tuesday" id="available_days_tuesday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -257,7 +257,7 @@
                                 <div class="help" :class="{active: info.support.available.days.wednesday}">
                                   <label for="available_days_wednesday" >
                                     <small>Qua</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.wednesday" id="available_days_wednesday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.wednesday" id="available_days_wednesday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -265,7 +265,7 @@
                                 <div class="help" :class="{active: info.support.available.days.thursday}">
                                   <label for="available_days_thursday" >
                                     <small>Qui</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.thursday" id="available_days_thursday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.thursday" id="available_days_thursday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -273,7 +273,7 @@
                                 <div class="help" :class="{active: info.support.available.days.friday}">
                                   <label for="available_days_friday" >
                                     <small>Sex</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.friday" id="available_days_friday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.friday" id="available_days_friday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -281,7 +281,7 @@
                                 <div class="help" :class="{active: info.support.available.days.saturday}">
                                   <label for="available_days_saturday" >
                                     <small>Sáb</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.saturday" id="available_days_saturday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.saturday" id="available_days_saturday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -289,7 +289,7 @@
                                 <div class="help" :class="{active: info.support.available.days.sunday}">
                                   <label for="available_days_sunday" >
                                     <small>Dom</small>
-                                    <input type="checkbox" name="support[]" v-model="info.support.available.days.sunday" id="available_days_sunday" value="available_anytime">
+                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.sunday" id="available_days_sunday" value="available_anytime">
                                   </label>
                                 </div>
                               </div>
@@ -304,7 +304,7 @@
                             <div class="help" :class="{active: info.support.available.anytime_hours}">
                               <label for="available_anytime_hours" >
                                 <small v-text="$ml.get('store.form.available.anytime_hours')">24 horas</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.available.anytime_hours" id="available_anytime_hours" value="available_anytime_hours">
+                                <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.anytime_hours" id="available_anytime_hours" value="available_anytime_hours">
                               </label>
                             </div>
                           </div>
@@ -312,7 +312,7 @@
                             <div class="help" :class="{active: info.support.available.expedient}">
                               <label for="available_expedient" >
                                 <small v-text="$ml.get('store.form.available.expedient')">9 ás 18h</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.available.expedient" id="available_expedient" value="available_expedient">
+                                <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.expedient" id="available_expedient" value="available_expedient">
                               </label>
                             </div>
                           </div>
@@ -323,7 +323,7 @@
                             <div class="help featured" :class="{active: info.support.available.add_others}">
                               <label for="available_others" >
                                 <small v-text="$ml.get('store.form.available.others')">Outro horário?</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.available.add_others" id="available_others" value="available_others">
+                                <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.add_others" id="available_others" value="available_others">
                               </label>
                             </div>
                           </div>
@@ -332,13 +332,13 @@
                             <div class="help" :class="{active: info.support.available.delivery}">
                               <label for="available_delivery" >
                                 <small v-text="$ml.get('store.form.available.delivery')">Delivery</small>
-                                <input type="checkbox" name="support[]" v-model="info.support.available.delivery" id="available_delivery" value="available_delivery">
+                                <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.delivery" id="available_delivery" value="available_delivery">
                               </label>
                             </div>
                           </div>
                           <div class="col-12" v-if="info.support.available.add_others">
                             <div class="form-group">
-                              <input class="form-control" type="text" v-model="info.support.available.others" name="" placeholder="Ex: 10h ás 15h" value="">
+                              <input autocomplete="off" class="form-control" type="text" v-model="info.support.available.others" name="" placeholder="Ex: 10h ás 15h" value="">
                             </div>
                           </div>
                         </div>
@@ -390,7 +390,7 @@
                         <div class="help" :class="{active: info.support.products.castanhas}">
                           <label for="castanhas">
                             <small>Castanhas e sementes</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.castanhas" id="castanhas" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.castanhas" id="castanhas" value="">
                           </label>
                         </div>
                       </div>
@@ -398,7 +398,7 @@
                         <div class="help" :class="{active: info.support.products.cereais}">
                           <label for="cereais">
                             <small>Cereais</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.cereais" id="cereais" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.cereais" id="cereais" value="">
                           </label>
                         </div>
                       </div>
@@ -406,7 +406,7 @@
                         <div class="help" :class="{active: info.support.products.ervas}">
                           <label for="ervas">
                             <small>Ervas e temperos</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.ervas" id="ervas" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.ervas" id="ervas" value="">
                           </label>
                         </div>
                       </div>
@@ -414,7 +414,7 @@
                         <div class="help" :class="{active: info.support.products.frutas}">
                           <label for="frutas">
                             <small>Frutas</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.frutas" id="frutas" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.frutas" id="frutas" value="">
                           </label>
                         </div>
                       </div>
@@ -422,7 +422,7 @@
                         <div class="help" :class="{active: info.support.products.hortalicas}">
                           <label for="hortalicas">
                             <small>Hortaliças (folhosas, verduras, legumes, etc..)</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.hortalicas" id="hortalicas" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.hortalicas" id="hortalicas" value="">
                           </label>
                         </div>
                       </div>
@@ -430,7 +430,7 @@
                         <div class="help" :class="{active: info.support.products.laticinios}">
                           <label for="laticinios">
                             <small>Laticínios</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.laticinios" id="laticinios" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.laticinios" id="laticinios" value="">
                           </label>
                         </div>
                       </div>
@@ -439,7 +439,7 @@
                         <div class="help" :class="{active: info.support.products.mel}">
                           <label for="mel">
                             <small>Mel</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.mel" id="mel" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.mel" id="mel" value="">
                           </label>
                         </div>
                       </div>
@@ -447,7 +447,7 @@
                         <div class="help" :class="{active: info.support.products.ovos}">
                           <label for="ovos">
                             <small>Ovos</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.ovos" id="ovos" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.ovos" id="ovos" value="">
                           </label>
                         </div>
                       </div>
@@ -455,7 +455,7 @@
                         <div class="help" :class="{active: info.support.products.carnes}">
                           <label for="carnes">
                             <small>Carnes (suína, bovina, aves)</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.carnes" id="carnes" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.carnes" id="carnes" value="">
                           </label>
                         </div>
                       </div>
@@ -463,7 +463,7 @@
                         <div class="help" :class="{active: info.support.products.pescados}">
                           <label for="pescados">
                             <small>Pescados</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.pescados" id="pescados" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.pescados" id="pescados" value="">
                           </label>
                         </div>
                       </div>
@@ -471,7 +471,7 @@
                         <div class="help" :class="{active: info.support.products.panificados}">
                           <label for="panificados">
                             <small>Panificados (pães, bolos, tortas, etc)</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.panificados" id="panificados" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.panificados" id="panificados" value="">
                           </label>
                         </div>
                       </div>
@@ -479,7 +479,7 @@
                         <div class="help" :class="{active: info.support.products.plantas}">
                           <label for="plantas">
                             <small>Plantas Alimentícias Não Convencionais (PANC)</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.plantas" id="plantas" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.plantas" id="plantas" value="">
                           </label>
                         </div>
                       </div>
@@ -487,14 +487,14 @@
                         <div class="help" :class="{active: info.support.products.add_others}">
                           <label for="add_others">
                             <small>Outros</small>
-                            <input type="checkbox" name="support[]" v-model="info.support.products.add_others" id="add_others" value="">
+                            <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.add_others" id="add_others" value="">
                           </label>
                         </div>
                       </div>
 
                       <div class="col-6" v-if="info.support.products.add_others">
                         <div class="form-group">
-                          <input type="text" class="form-control"  v-model="info.support.products.others" value="">
+                          <input autocomplete="off" type="text" class="form-control"  v-model="info.support.products.others" value="">
                         </div>
                       </div>
                     </div>
@@ -546,7 +546,7 @@
                       <div class="help" :class="{active: info.support.products.organic}">
                         <label for="organic">
                           <small>Sim</small>
-                          <input type="checkbox" name="support[]" v-model="info.support.products.organic" id="organic" value="">
+                          <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.organic" id="organic" value="">
                         </label>
                       </div>
                     </div>
@@ -554,7 +554,7 @@
                       <div class="help" :class="{active: info.support.products.in_transition}">
                         <label for="in_transition">
                           <small>Em transição</small>
-                          <input type="checkbox" name="support[]" v-model="info.support.products.in_transition" id="in_transition" value="">
+                          <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.in_transition" id="in_transition" value="">
                         </label>
                       </div>
                     </div>
@@ -562,7 +562,7 @@
                       <div class="help" :class="{active: info.support.products.no_organic}">
                         <label for="no_organic">
                           <small>Não</small>
-                          <input type="checkbox" name="support[]" v-model="info.support.products.no_organic" id="no_organic" value="">
+                          <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.products.no_organic" id="no_organic" value="">
                         </label>
                       </div>
                     </div>
@@ -576,7 +576,7 @@
                     <div class="help veracidade form-group"  :class="{active: info.support.veracidade}">
                       <label class="check_truth checklabel" for="veracidade">
                         <small v-text="$ml.get('sidebar.form.truth')"></small>
-                        <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
+                        <input autocomplete="off" type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
                       </label>
                     </div>
                   </div>
@@ -760,10 +760,10 @@ export default {
       async getCities(v, select) {
         const payload = await this.$http.get(window.config.api_url+'/api/cities',
         {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          // headers: {
+          //   'Access-Control-Allow-Origin': '*',
+          //   'Content-Type': 'application/json',
+          // },
           params: { uf_id: this.info.address.state }
         })
         this.cities = payload.data.data
