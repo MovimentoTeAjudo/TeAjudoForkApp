@@ -4,18 +4,18 @@
       <div class="row justify-content-center">
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
           <h1 class="single-info__title">{{item.name}}</h1>
-          <h3 class="single-info__type" v-if="item.options.agricultor_familiar">Agricultor Familiar</h3>
-          <h3 class="single-info__type" v-if="item.options.agricultor_familiar_de_grupo">Agricultor Familiar Grupo/Comunidade</h3>
-          <h3 class="single-info__type" v-if="item.options.agricultor_urbano">Agricultor Urbano</h3>
-          <h3 class="single-info__type" v-if="item.options.comerciante_de_produtos">Comerciante de Produtos</h3>
+          <h3 class="single-info__type" v-if="item.options && item.options.agricultor_familiar">Agricultor Familiar</h3>
+          <h3 class="single-info__type" v-if="item.options && item.options.agricultor_familiar_de_grupo">Agricultor Familiar Grupo/Comunidade</h3>
+          <h3 class="single-info__type" v-if="item.options && item.options.agricultor_urbano">Agricultor Urbano</h3>
+          <h3 class="single-info__type" v-if="item.options && item.options.comerciante_de_produtos">Comerciante de Produtos</h3>
 
           <span v-if="item.email"><a class="btn btn-info" :href="`mailto:${item.email}`"> Email </a></span>
           <span v-if="item.phone"><a class="btn btn-info" :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
           <span v-if="item.whatsapp"><a class="btn btn-info" target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
             <hr>
 
-          <AvailableDays :options="item.options.available" />
-          <AvailableFoods :options="item.options.products" />
+          <AvailableDays v-if="item.options" :options="item.options.available" />
+          <AvailableFoods v-if="item.options" :options="item.options.products" />
 
 
 
