@@ -35,6 +35,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import EventBus from '@src/event-bus';
+
 import AvailableDays from '@components/Item/Partials/AvailableDays'
 import AvailableFoods from '@components/Item/Partials/AvailableFoods'
 
@@ -51,6 +53,9 @@ export default {
   },
   mounted() {
     this.getItem()
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR_HOME', false);
   },
   watch: {
     slug() {
