@@ -1,51 +1,53 @@
 <template>
-   <div ref="parentSidebar">
-     <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-right  color="success" :reduce="reduce" :reduce-not-hover-expand="notExpand" class="sidebarx" spacer >
+   <div class="">
+     <div ref="parentSidebar">
+       <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-left  :hidden-background="hiddenBackground" :click-not-close="clickNotClose" color="success" :reduce="reduce"  class="sidebarx" spacer >
 
-      <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src="/images/farmer/logo.png"/>
-      </div>
+        <div class="header-sidebar" slot="header">
+          <vs-avatar  size="70px" src="/images/farmer/logo.png"/>
+        </div>
 
-      <vs-sidebar-item index="1" icon="home" to="/">
-        Home
-      </vs-sidebar-item>
-      <vs-sidebar-item index="2" icon="map" to="/mapa">
-        Mapa
-      </vs-sidebar-item>
-      <vs-sidebar-item index="3" icon="list" to="/lista/store">
-        Lista
-      </vs-sidebar-item>
-
-      <vs-sidebar-item index="4" icon="store" to="/novo-produtor">
-        Sou um produtor
-      </vs-sidebar-item>
-
-
-
-      <vs-divider position="left"></vs-divider>
-
-      <vs-sidebar-item index="5" icon="format_align_center" to="/sobre">
-        Sobre
-      </vs-sidebar-item>
-
-
-      <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
-        <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
-      </vs-sidebar-item>
-      <vs-sidebar-item index="7" icon="system_update" @click="updateApp">
-        Atualizar App
-      </vs-sidebar-item>
-
-
-
-      <div class="footer-sidebar" slot="footer">
-        <vs-sidebar-item index="7" icon="keyboard_arrow_left">
-          Open
+        <vs-sidebar-item index="1" icon="home" to="/">
+          Home
+        </vs-sidebar-item>
+        <vs-sidebar-item index="2" icon="map" to="/mapa">
+          Mapa
+        </vs-sidebar-item>
+        <vs-sidebar-item index="3" icon="list" to="/lista/store">
+          Lista
         </vs-sidebar-item>
 
-      </div>
+        <vs-sidebar-item index="4" icon="store" to="/novo-produtor">
+          Sou um produtor
+        </vs-sidebar-item>
 
-    </vs-sidebar>
+
+
+        <vs-divider position="left"></vs-divider>
+
+        <vs-sidebar-item index="5" icon="format_align_center" to="/sobre">
+          Sobre
+        </vs-sidebar-item>
+
+
+        <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
+          <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
+        </vs-sidebar-item>
+        <vs-sidebar-item index="7" icon="system_update" @click="updateApp">
+          Atualizar App
+        </vs-sidebar-item>
+
+
+
+        <div class="footer-sidebar" slot="footer">
+          <vs-sidebar-item index="7" icon="keyboard_arrow_right">
+            &nbsp;
+          </vs-sidebar-item>
+
+        </div>
+
+      </vs-sidebar>
+     </div>
    </div>
 
 </template>
@@ -57,9 +59,11 @@ import { isMobile, isAndroid,isMobileSafari } from 'mobile-device-detect';
 export default {
   data() {
     return {
-      active: false,
-      reduce: true,
+      active: true,
+      reduce: !isMobile ? true : false,
       notExpand: false,
+      hiddenBackground: !isMobile ? true : false,
+      clickNotClose: isMobile ? false : true,
 
       isMobile: isMobile,
       isAndroid: isAndroid,
@@ -74,31 +78,8 @@ export default {
   created() {
     if(self.INSTALLAPPEVENT) this.showInstall = true
 
-    EventBus.$on('OPEN_SIDEBAR_HOME', this.changeState);
+    if(this.isMobile) EventBus.$on('OPEN_SIDEBAR_HOME', this.changeState);
 
-    if (navigator.standalone) {
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'ios'
-        })
-      this.installedAppPWA = true;
-      this.showInstall = false
-    } else if (matchMedia('(display-mode: standalone)').matches) {
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'android'
-        })
-      this.installedAppPWA = true;
-        this.showInstall = false
-    } else {
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'Browser'
-        })
-    }
   },
   methods: {
     changeState(v){
@@ -112,7 +93,7 @@ export default {
         if (navigator.share) {
           navigator.share({
             title: 'TeAjudo.me',
-            url: 'https://teajudo.me?utm_source=shareapp'
+            url: 'https://www.movimentoteajudo.com.br?utm_source=shareapp'
           }).then(() => {
             console.log('Thanks for sharing!');
           })

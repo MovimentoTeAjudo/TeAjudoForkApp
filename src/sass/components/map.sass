@@ -1,7 +1,26 @@
-.location, .search-area
+.search-area
   position: absolute
   top: 20px
   border-radius: 4px
+  left: 50%
+  background: $white
+  z-index: 3
+  -webkit-box-shadow: 2px 2px 32px -13px rgba(184,184,184,1)
+  -moz-box-shadow: 2px 2px 32px -13px rgba(184,184,184,1)
+  box-shadow: 2px 2px 32px -13px rgba(184,184,184,1)
+  border: 1px solid #dedede
+  transform: translate(-50%)
+  @media only screen and (max-width: 600px)
+    right: auto
+    bottom: auto
+    width: 160px
+    top: 60px
+
+
+.location
+  position: absolute
+  top: 20px
+  border-radius: 50%
   right: 10px
   background: $white
   z-index: 3
@@ -10,20 +29,18 @@
   box-shadow: 2px 2px 32px -13px rgba(184,184,184,1)
   border: 1px solid #dedede
   @media only screen and (max-width: 600px)
-    right: 0
+    right: 10px
     bottom: 190px
     top: auto
-    width: 40px
+    width: 35px
+    height: 35px
+    .icon-target
+      position: absolute
+      top: 50%
+      left: 50%
+      font-size: 13px
+      transform: translate(-50%,-50%)
 
-.search-area
- right: 190px
- @media only screen and (max-width: 600px)
-    right: auto
-    left: 50%
-    bottom: auto
-    transform: translate(-50%)
-    width: 160px
-    top: 100px
 
 
 .mapboxgl-ctrl-top-right
@@ -40,7 +57,6 @@
 .map
   position: absolute
   top: 0
-  right: 280px
   width: 100%
   height: 100%
   transition: right .2s linear

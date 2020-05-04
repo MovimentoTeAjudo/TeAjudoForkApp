@@ -572,13 +572,11 @@
               </div>
               <div class="col-sm-12 col-md-10 col-lg-10 col-xl-8 mt-xl-5 mt-4">
                 <div class="organic--wrapper">
-                  <div class="helps">
-                    <div class="help veracidade form-group"  :class="{active: info.support.veracidade}">
-                      <label class="check_truth checklabel" for="veracidade">
-                        <small v-text="$ml.get('sidebar.form.truth')"></small>
-                        <input autocomplete="off" type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
-                      </label>
-                    </div>
+                  <div class="row justify-content-center veracidade form-group"  :class="{active: info.support.veracidade}">
+                    <label class="check_truth checklabel col-sm-12 col-md-6" for="veracidade">
+                      <input autocomplete="off" type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
+                      <small v-text="$ml.get('sidebar.form.truth')"></small>
+                    </label>
                   </div>
                   <div class="form-group text-right mt-4">
                     <button @click="onSubmit" class="btn btn-block btn-info"

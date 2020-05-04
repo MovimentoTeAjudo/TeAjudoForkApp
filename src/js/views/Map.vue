@@ -4,13 +4,9 @@
 
       <div class="map">
 
-        <div class="location">
+        <div class="location" @click="locateMe" v-if="moveMap">
           <div class="text-center">
-            <a class="btn" @click="locateMe">
               <span class="icon-target"></span>
-              <span v-if="!isMobile" v-text="$ml.get('home.map.location')"></span>
-              <small v-if="!isLocated">loading...</small>
-            </a>
           </div>
         </div>
 
@@ -18,7 +14,7 @@
           <div class="text-center">
             <a class="btn" @click="searchByArea">
               <span class="icon-busca"></span>
-              <span v-if="!isMobile" v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
+              <span v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
             </a>
           </div>
         </div>
@@ -43,18 +39,7 @@
 
         <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="#0eca4c">
 
-          <MglPopup :showed="true">
-            <div class="popup">
-              <h3 v-text="$ml.get('home.map.marker.esta_aqui')"></h3>
 
-              <div class="" v-if="!isMobile">
-                <router-link class="btn btn-active  btn-sm btn-white" to="/preciso-de-ajuda" v-text="$ml.get('menu.needup')">Preciso de ajuda</router-link>
-                <router-link class="btn btn-sm btn-white" to="/posso-ajudar" v-text="$ml.get('menu.handup')">Posso ajudar</router-link>
-                <router-link class="btn btn-sm btn-white" to="/negocio" v-text="$ml.get('menu.marketup')">Tenho um pequeno negócio</router-link>
-              </div>
-
-            </div>
-          </MglPopup>
         </MglMarker>
 
           <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]" color="blue">
@@ -109,7 +94,7 @@ export default {
       items: [],
       loadedItems: false,
       isSearchByArea: false,
-      oldZoom: false,
+      moveMap: false,
 
       isMobile: isMobile,
       sidebarOpen: false,
@@ -127,9 +112,6 @@ export default {
     EventBus.$emit('OPEN_SIDEBAR_HOME', false);
     this.mapbox = Mapbox;
   },
-  mounted() {
-    this.show()
-  },
   computed: {
     markers() {
       this.items = this.$store.getters.getMarkers;
@@ -143,11 +125,6 @@ export default {
       'actionGetAllUsers',
       'actionSetNewPosition'
     ]),
-    filterType(type) {
-      return this.items.filter((item) => {
-        return item.type.match(type);
-      });
-    },
     async getLocation() {
 
       return new Promise((resolve, reject) => {
@@ -166,6 +143,7 @@ export default {
 
       });
     },
+
     async locateMe() {
       try {
 
@@ -188,7 +166,13 @@ export default {
 
         this.map.on('zoomend', this.onZoomOut)
 
+        const _this = this;
+        this.map.on('movestart', function() {
+          _this.moveMap = true
+        });
+
         this.loadedMap = true
+        this.moveMap = false
       } catch(e) {
         console.error(e);
       }
@@ -232,20 +216,6 @@ export default {
     	if (d>1) return Math.round(d);
     	return d;
     },
-    selectCampaign(c) {
-      this.$cookies.set('_tamodalcampaign', c, 60 * 60 * 24 * 30)
-      this.$router.push('/movimento117')
-    },
-    show () {
-      if($cookies.isKey('_tamodalcampaign')) return;
-      this.$modal.show('select-campaign');
-    },
-    hide () {
-      this.$modal.hide('select-campaign');
-    },
-    beforeClose() {
-      this.$cookies.set('_tamodalcampaign', true, 60 * 60 * 24 * 30)
-    }
   }
 }
 </script>

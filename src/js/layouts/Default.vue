@@ -1,34 +1,34 @@
 <template>
-  <div class="wrapper"
-  :class='{"sidebar-active":sidebarOpen}'>
+  <div class="wrapper">
 
     <!-- <div class="start" v-if="!startStep">
     </div> -->
 
     <div class="">
       <!-- <Topbar v-if="isMobile" /> -->
-
-      <SidebarMobile v-if="isMobile" />
+      <button
+       class="btn btn-info btn-menu"  @click="emitMethod"><span class="icon-lista"></span>
+     </button>
+      <SidebarMobile/>
 
       <router-view></router-view>
 
       <BottomBar v-if="isMobile" />
-      <Sidebar v-if="!isMobile" />
+      <!-- <Sidebar v-if="!isMobile" /> -->
       <notifications group="foo" />
     </div>
   </div>
 </template>
 <script>
 import { isMobile } from 'mobile-device-detect';
-import Sidebar from '@components/Sidebar';
 import Topbar from '@components/Topbar';
 import BottomBar from '@components/BottomBar';
 import SidebarMobile from '@components/SidebarMobile'
+import EventBus from '@src/event-bus';
 
 export default {
   name: 'app',
   components: {
-    Sidebar,
     BottomBar,
     Topbar,
     SidebarMobile
@@ -36,7 +36,6 @@ export default {
   data() {
     return {
       isMobile: isMobile,
-      sidebarOpen: false,
       startStep: true,
     };
   },
@@ -67,7 +66,26 @@ export default {
           OneSignal.sendTag("u_user_campaign", uHashCurrent);
         })
       }
+    },
+    emitMethod (v) {
+       EventBus.$emit('OPEN_SIDEBAR_HOME', true);
     }
   }
 }
 </script>
+<style lang="sass">
+  .btn-menu
+    position: absolute
+    top: 10px
+    left: 10px
+    z-index: 2
+    width: 35px
+    height: 35px
+    border-radius: 50%
+    .icon-lista
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%,-50%)
+      font-size: 15px
+</style>

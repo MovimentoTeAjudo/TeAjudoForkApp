@@ -41,7 +41,7 @@ const baseRoutes = [
     path: '/novo-produtor',
     component : Store,
     name: 'store',
-    meta: { bodyClass: 'small_business'  }
+    meta: { bodyClass: 'small_business hidden-bottombar'  }
   },
   {
     path: '/lista/:type',
