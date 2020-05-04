@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   ul
     li
       padding: 10px 15px
@@ -60,4 +60,5 @@ export default {
       display: inline-flex
       font-size: 12px
       font-weight: 700
+      margin-bottom: 10px
 </style>
