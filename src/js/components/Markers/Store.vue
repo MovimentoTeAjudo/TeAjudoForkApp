@@ -2,35 +2,24 @@
   <div>
     <MglPopup>
       <div class="popup text-center">
-        <div class="">Pequeno Negócio</div>
-
-
         <div class="popup-head row align-items-center">
           <h3 class="col-11">{{item.name}}</h3>
         </div>
 
         <div class="support"  v-if="item.options">
           <div>
-            <span v-if="item.options.market">
-              <i class="icon-shopping-cart"></i>
-              <small v-text="$ml.get('store.form.help.market')"></small>
+            <span v-if="item.options.agricultor_familiar">
+              <small>Agricultor Familiar</small>
             </span>
 
-            <span v-if="item.options.health">
-              <i class="icon-store-front"></i>
-              <small v-text="$ml.get('store.form.help.health')"></small>
+            <span v-if="item.options.agricultor_familiar_de_grupo">
+              <small>Agricultor Familiar Grupo/Comunidade</small>
             </span>
-            <span v-if="item.options.mechanical">
-              <i class="icon-cogs"></i>
-              <small v-text="$ml.get('store.form.help.mechanical')"></small>
+            <span v-if="item.options.agricultor_urbano">
+              <small>Agricultor Urbano</small>
             </span>
-            <span v-if="item.options.market_garden">
-              <i class="icon-location-food"></i>
-              <small v-text="$ml.get('store.form.help.market_garden')"></small>
-            </span>
-            <span v-if="item.options.food">
-              <i class="icon-location-food"></i>
-              <small v-text="$ml.get('store.form.help.food')"></small>
+            <span v-if="item.options.comerciante_de_produtos">
+              <small>Comerciante de Produtos</small>
             </span>
           </div>
           <div v-if="item.options.others">
@@ -87,12 +76,15 @@
 
 
         </div>
+        <hr>
+        <router-link class="btn btn-active" :to="`/`+item.slug">
+          Mais informações
+        </router-link>
 
-        <p v-text="$ml.get('home.map.popup.talk_to')"></p>
 
-        <span v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
+        <!-- <span v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
         <span v-if="item.phone"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
-        <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
+        <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span> -->
       </div>
     </MglPopup>
   </div>

@@ -4,12 +4,6 @@
 
       <div class="map">
 
-        <div class="location" @click="locateMe" v-if="moveMap">
-          <div class="text-center">
-              <span class="icon-target"></span>
-          </div>
-        </div>
-
         <div class="search-area" v-if="isSearchByArea">
           <div class="text-center">
             <a class="btn" @click="searchByArea">
@@ -33,14 +27,11 @@
           :center="coordinates"
           :zoom="zoom"
           @load="onMapLoad"
+          :attributionControl="false"
         >
-        <MglNavigationControl v-if="!isMobile" :position="positionControl" />
 
-
-        <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="#0eca4c">
-
-
-        </MglMarker>
+          <MglNavigationControl v-if="!isMobile" :position="positionControl" />
+          <MglGeolocateControl :position="positionControl" />
 
           <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]" color="blue">
             <div class="" slot="marker">
@@ -57,10 +48,8 @@ import EventBus from '@src/event-bus';
 import { isMobile } from 'mobile-device-detect';
 import Mapbox from "mapbox-gl";
 import {
-  MglMap, MglPopup, MglMarker, MglAttributionControl,
-  MglNavigationControl,
-  MglFullscreenControl,
-  MglScaleControl  } from "vue-mapbox";
+  MglMap, MglPopup, MglMarker,
+  MglNavigationControl,MglGeolocateControl  } from "vue-mapbox";
 
 import MglGeocoderControl from 'vue-mapbox-geocoder'
 import { mapGetters, mapActions } from 'vuex'
@@ -71,25 +60,24 @@ import BottomBar from '@components/BottomBar';
 import MarkerUser from '@components/Markers/User';
 import MarkerStore from '@components/Markers/Store';
 
+
 export default {
   name: 'home_map',
+  props: ['slug'],
   components: {
     MglMap,
     MglMarker,
     MglPopup,
-    MglAttributionControl,
     MglNavigationControl,
-
+    MglGeolocateControl,
     Sidebar,
     BottomBar,
-
     MarkerStore,
     MarkerUser
   },
   data() {
     return {
       mapx: undefined,
-      mapbox : undefined,
       loadedMap: false,
       items: [],
       loadedItems: false,
@@ -105,12 +93,11 @@ export default {
       mapStyle: 'mapbox://styles/brunodevsp/ck8ngw7go0r6l1ipriw3gi2lk',
       coordinates: this.$cookies.isKey('_tageocord') ? [this.$cookies.get('_tageocord').lng,this.$cookies.get('_tageocord').lat] : [-60.943904,-10.5705057],
       zoom: this.$cookies.isKey('_tageocord') ? 10 : 2,
-      positionControl: isMobile ? 'top-right' : 'bottom-right'
+      positionControl: 'top-right'
     };
   },
   created() {
     EventBus.$emit('OPEN_SIDEBAR_HOME', false);
-    this.mapbox = Mapbox;
   },
   computed: {
     markers() {
@@ -166,13 +153,9 @@ export default {
 
         this.map.on('zoomend', this.onZoomOut)
 
-        const _this = this;
-        this.map.on('movestart', function() {
-          _this.moveMap = true
-        });
+        //this.map.on('movestart');
 
         this.loadedMap = true
-        this.moveMap = false
       } catch(e) {
         console.error(e);
       }
@@ -219,16 +202,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-  .select-campaign
-    &-item
-      &:hover
-        background: aliceblue
-    .modal-body
-
-      .pb
-        padding-bottom: 20px
-      .pt
-        padding-top: 20px
-</style>

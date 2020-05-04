@@ -6,7 +6,7 @@
 
     <div class="">
       <!-- <Topbar v-if="isMobile" /> -->
-      <button
+      <button v-if="isMobile"
        class="btn btn-info btn-menu"  @click="emitMethod"><span class="icon-lista"></span>
      </button>
       <SidebarMobile/>
@@ -27,7 +27,7 @@ import SidebarMobile from '@components/SidebarMobile'
 import EventBus from '@src/event-bus';
 
 export default {
-  name: 'app',
+  name: 'Default',
   components: {
     BottomBar,
     Topbar,

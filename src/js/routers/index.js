@@ -11,6 +11,7 @@ import About from '@views/About'
 import StaySafe from '@views/StaySafe'
 import Store from '@views/Store'
 import List from '@views/List'
+import Item from '@views/Item'
 
 const baseRoutes = [
   {
@@ -23,7 +24,14 @@ const baseRoutes = [
     path: '/mapa',
     name: 'home_map',
     component: Map,
-    meta: { bodyClass: 'dashboard' }
+    meta: { bodyClass: 'dashboard' },
+  },
+  {
+    path: '/:slug',
+    name: 'home_map_item',
+    component: Item,
+    props: true,
+    meta: { bodyClass: 'dashboard map-item' }
   },
   {
     path: '/fique-seguro',
@@ -59,7 +67,8 @@ const routes = baseRoutes.concat(
 )
 
 const router = new Router({
-  routes
+  mode: 'history',
+  routes: routes
 })
 
 const vueBodyClass = new VueBodyClass(routes);
