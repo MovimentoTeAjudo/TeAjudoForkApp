@@ -21,19 +21,6 @@ const baseRoutes = [
     meta: { bodyClass: 'dashboard', layout: 'LayoutHome'  }
   },
   {
-    path: '/mapa',
-    name: 'home_map',
-    component: Map,
-    meta: { bodyClass: 'dashboard' },
-  },
-  {
-    path: '/:slug',
-    name: 'home_map_item',
-    component: Item,
-    props: true,
-    meta: { bodyClass: 'dashboard map-item' }
-  },
-  {
     path: '/fique-seguro',
     component : StaySafe,
     name: 'seguranca',
@@ -57,7 +44,20 @@ const baseRoutes = [
     name: 'List',
     props: true,
     meta: { bodyClass: 'list'  }
-  }
+  },
+  {
+    path: '/mapa',
+    name: 'home_map',
+    component: Map,
+    meta: { bodyClass: 'dashboard' },
+  },
+  {
+    path: '/:slug',
+    name: 'single_item',
+    component: Item,
+    props: true,
+    meta: { bodyClass: 'dashboard map-item' }
+  },
 ]
 
 // import Movimento from './movimento'

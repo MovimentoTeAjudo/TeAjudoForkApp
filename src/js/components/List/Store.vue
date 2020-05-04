@@ -2,7 +2,7 @@
   <div class="">
     <div class="row no-gutters" slot="header">
       <div class="col-2">
-        <img v-if="item && item.options && item.options.market_garden" src="/images/feira.png" width="32" height="32" alt="">
+        <img src="/images/feira.png" width="32" height="32" alt="">
       </div>
       <div class="col-8">
         <h3>
@@ -48,12 +48,7 @@
       </div>
     </div>
     <div slot="footer">
-      <div class="contact">
-
-        <span class="tag" v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
-        <span class="tag" v-if="item.phone"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
-        <span class="tag" v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
-      </div>
+      <router-link class="btn btn-block btn-active" :to="`/`+item.slug">Mais informações</router-link>
     </div>
   </div>
 </template>

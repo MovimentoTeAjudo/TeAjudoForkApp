@@ -311,7 +311,7 @@
                           <div class="col-6">
                             <div class="help" :class="{active: info.support.available.expedient}">
                               <label for="available_expedient" >
-                                <small v-text="$ml.get('store.form.available.expedient')">9 ás 18h</small>
+                                <small v-text="$ml.get('store.form.available.expedient')">9h ás 18h</small>
                                 <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.expedient" id="available_expedient" value="available_expedient">
                               </label>
                             </div>
