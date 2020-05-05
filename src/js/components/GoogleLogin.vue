@@ -19,7 +19,7 @@ export default {
       name: '',
       google: {
         params: {
-            client_id: window.config.google_client_id
+          client_id: window.config.google_client_id
         },
       }
     }

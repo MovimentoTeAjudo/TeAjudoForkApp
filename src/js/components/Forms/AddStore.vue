@@ -71,7 +71,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label for="">CEP *</label>
-                               <input autocomplete="off" type="number" minlength="8" maxlength="8" @keyup="getAddressByCep" class="form-control" v-model="info.address.cep">
+                               <input autocomplete="off" type="number" minlength="8" maxlength="8" class="form-control" v-model="info.address.cep">
                                <small>Apenas números</small>
                             </div>
                           </div>
@@ -100,7 +100,7 @@
                           <div class="col-4">
                             <div class="form-group">
                               <label for="">Número *</label>
-                               <input autocomplete="off" type="number" class="form-control" v-model="info.address.number" name="" value="">
+                               <input autocomplete="off" type="number" class="form-control" v-model="info.address.number" name="number" value="">
                             </div>
                           </div>
                           <div class="col">
