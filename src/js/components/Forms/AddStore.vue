@@ -18,18 +18,29 @@
 
                         <div class="form-group">
                           <label for="">Seu nome *</label>
-                           <input autocomplete="off" type="text" class="form-control" v-model="info.support.owner" name="owner" placeholder="Seu nome"  required>
+                           <input type="text" class="form-control" v-model="info.support.owner" value="" name="owner" placeholder="Seu nome"  required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="">Seu melhor e-mail</label>
+                          <input type="email" class="form-control" v-model="info.email" name="email" value="" :placeholder="$ml.get('sidebar.form.email')">
+                          <small v-if="!info.google_id" @click="info.add_auth = !info.add_auth" class="u link">Criar senha ou se conectar com google ( opcional )</small>
+                        </div>
+                        <div class="form-group" v-if="info.add_auth">
+                          <div class="" v-if="!info.google_id">
+                            <label for="">Senha</label>
+                            <input class="form-control" type="password" v-model="info.password" name="" value="">
+                            <vs-divider> <small>Ou</small> </vs-divider>
+                          </div>
+
+
+                          <GoogleLogin v-on:onSigned="onSigned" />
                         </div>
                         <div class="form-group">
                           <label for="">Seu telefone *</label>
                           <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
                           <label for="atende_whatsapp"><small>Atende via WhatsApp? <input id="atende_whatsapp" type="checkbox" name="" v-model="info.whatsapp" value=""> </small></label>
                         </div>
-                        <div class="form-group">
-                          <label for="">Seu melhor e-mail</label>
-                           <input autocomplete="off" type="email" class="form-control" v-model="info.email" name="creditcard" :placeholder="$ml.get('sidebar.form.email')">
-                        </div>
-
                       </div>
                       <div class="col-12 mt-xl-2 mt-4">
                         <div class="btn btn-block btn-info btn-next"
@@ -80,7 +91,7 @@
                           <div class="col-12">
                             <div class="form-group" >
                               <label for="">Endereço *</label>
-                              <Geocoder @onDragEnd="onDragEnd" @onResult="onResultAddress" ></Geocoder>
+                              <Geocoder @onResult="onResultAddress" ></Geocoder>
                             </div>
                           </div>
                         </div>
@@ -311,13 +322,13 @@
                             <div class="help" :class="{active: info.support.available.delivery}">
                               <label for="available_delivery" >
                                 <small v-text="$ml.get('store.form.available.delivery')">Delivery</small>
-                                <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.delivery" id="available_delivery" value="available_delivery">
+                                <input type="checkbox" name="support[]" v-model="info.support.available.delivery" id="available_delivery" value="available_delivery">
                               </label>
                             </div>
                           </div>
                           <div class="col-12" v-if="info.support.available.add_others">
                             <div class="form-group">
-                              <input autocomplete="off" class="form-control" type="text" v-model="info.support.available.others" name="" placeholder="Ex: 10h ás 15h" value="">
+                              <input class="form-control" type="text" v-model="info.support.available.others" name="" placeholder="Ex: 10h ás 15h" value="">
                             </div>
                           </div>
                         </div>
@@ -578,6 +589,8 @@
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { isMobile } from 'mobile-device-detect';
 
+import GoogleLogin from '@components/GoogleLogin'
+
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
@@ -595,7 +608,8 @@ export default {
       VuePhoneNumberInput,
       Geocoder,
       Swiper,
-      SwiperSlide
+      SwiperSlide,
+      GoogleLogin
     },
     data(){
       return {
@@ -607,10 +621,15 @@ export default {
         timeoutSearchCep: false,
 
         info: {
+          email: '',
+          google_id: '',
+          add_auth: false,
+
           address: {},
           member: 'volunteer',
           location: {},
           support: {
+            owner: '',
             products: {},
             available: {
               days: []
@@ -624,9 +643,9 @@ export default {
           example: this.$ml.get('sidebar.form.input.example')
         },
         swiperOptions: {
-          allowSlideNext: true,
+          allowSlideNext: false,
           allowSlidePrev: true,
-          allowTouchMove: true,
+          allowTouchMove: false,
           pagination: {
             el: '.swiper-pagination',
             type: 'fraction'
@@ -646,6 +665,7 @@ export default {
     },
     updated() {
       document.querySelector('.swiper-slide').style.height = document.documentElement.clientHeight
+
     },
     methods: {
       ...mapGetters([
@@ -680,21 +700,10 @@ export default {
           });
 
           this.actionSetNewUser(payload.data.data)
-          this.$router.push('/');
+          this.$router.push('/mapa');
 
-          this.$gtag.event('add_store', {
-              'event_category': 'success',
-              'event_label': 'ok_ao_inserir',
-              'event_value': this.info
-            })
-
-            this.info = {location:{}, support:{}}
+          this.info = {location:{}, support:{}}
         } else {
-          this.$gtag.event('add_store', {
-              'event_category': 'error',
-              'event_label': 'erro_ao_inserir',
-              'event_value': this.info
-            })
 
           this.$notify({
             group: 'foo',
@@ -712,10 +721,6 @@ export default {
       },
       updatePhone(v) {
         this.info.phone = v.formattedNumber
-      },
-      onDragEnd(v) {
-        if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
-          this.isLocated = true
       },
       onResultAddress(v){
         this.info.address.address = v.place_name;
@@ -768,10 +773,15 @@ export default {
           })
           return;
         }
-
         this.info.support.available.days.push(day)
+      },
+      onSigned(data) {
+        console.log(data.email);
+        this.info.support.owner = data.name
+        this.info.email = data.email
+        this.info.google_id = data.id
       }
-    }
+    },
 }
 </script>
 <style lang="scss">

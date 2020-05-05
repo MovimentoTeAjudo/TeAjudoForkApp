@@ -15,10 +15,11 @@ import axios from 'axios'
 Vue.prototype.$http = axios
 
 import router from './routers/index'
-import * as VueGoogleMaps from "vue2-google-maps";
+
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Notifications from 'vue-notification'
 import Store from './store/store';
+
 import VueCookies from 'vue-cookies'
 import VueGtag from "vue-gtag";
 import VModal from 'vue-js-modal'
@@ -28,11 +29,25 @@ import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
 
+import EventBus from '@src/event-bus';
+import { LoaderPlugin } from 'vue-google-login';
+
+Vue.use(LoaderPlugin, {
+    client_id: window.config.google_client_id
+});
+Vue.GoogleAuth.then(auth2 => {
+   
+  EventBus.$emit('GOOGLE_SIGNED_DATA', {
+    'logged':true,
+    'data':auth2.currentUser.get()
+  });
+})
+
 Vue.use(Vuesax)
 
-import VueTour from 'vue-tour'
-import 'vue-tour/dist/vue-tour.css'
-Vue.use(VueTour)
+// import VueTour from 'vue-tour'
+// import 'vue-tour/dist/vue-tour.css'
+// Vue.use(VueTour)
 
 // Layouts
 import DefaultLayout from './layouts/Default'
