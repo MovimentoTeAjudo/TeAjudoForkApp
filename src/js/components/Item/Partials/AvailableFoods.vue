@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  h4
+    font-size: 15px
+    margin-bottom: 20px
   ul
     li
       padding: 10px 15px
@@ -35,5 +38,8 @@ export default {
       display: inline-flex
       font-size: 12px
       font-weight: 700
-      margin-bottom: 10px
+      margin-bottom: 5px
+      margin-right: 5px
+      @media only screen and (max-width: 600px)
+        padding: 5px 10px
 </style>

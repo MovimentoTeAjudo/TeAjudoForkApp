@@ -23,6 +23,7 @@
                         <div class="form-group">
                           <label for="">Seu telefone *</label>
                           <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
+                          <label for="atende_whatsapp"><small>Atende via WhatsApp? <input id="atende_whatsapp" type="checkbox" name="" v-model="info.whatsapp" value=""> </small></label>
                         </div>
                         <div class="form-group">
                           <label for="">Seu melhor e-mail</label>
@@ -238,62 +239,40 @@
                           <div class="col-12">
                             <div class="row">
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.monday}">
-                                  <label for="available_days_monday" >
-                                    <small>Seg</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.monday" id="available_days_monday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Segunda')" :class="{active: info.support.available.days.includes('Segunda')}">
+                                  <label for="available_days_monday" ><small>Seg</small>  </label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.tuesday}">
-                                  <label for="available_days_tuesday" >
-                                    <small>Ter</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.tuesday" id="available_days_tuesday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Terça')" :class="{active: info.support.available.days.includes('Terça')}">
+                                  <label for="available_days_tuesday" ><small>Ter</small></label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.wednesday}">
-                                  <label for="available_days_wednesday" >
-                                    <small>Qua</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.wednesday" id="available_days_wednesday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Quarta')" :class="{active: info.support.available.days.includes('Quarta')}">
+                                  <label for="available_days_wednesday" ><small>Qua</small>  </label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.thursday}">
-                                  <label for="available_days_thursday" >
-                                    <small>Qui</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.thursday" id="available_days_thursday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Quinta')" :class="{active: info.support.available.days.includes('Quinta')}">
+                                  <label for="available_days_thursday" >  <small>Qui</small>  </label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.friday}">
-                                  <label for="available_days_friday" >
-                                    <small>Sex</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.friday" id="available_days_friday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Sexta')" :class="{active: info.support.available.days.includes('Sexta')}">
+                                  <label for="available_days_friday" ><small>Sex</small></label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.saturday}">
-                                  <label for="available_days_saturday" >
-                                    <small>Sáb</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.saturday" id="available_days_saturday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Sábado')" :class="{active: info.support.available.days.includes('Sábado')}">
+                                  <label for="available_days_saturday" ><small>Sáb</small></label>
                                 </div>
                               </div>
                               <div class="col-3">
-                                <div class="help" :class="{active: info.support.available.days.sunday}">
-                                  <label for="available_days_sunday" >
-                                    <small>Dom</small>
-                                    <input autocomplete="off" type="checkbox" name="support[]" v-model="info.support.available.days.sunday" id="available_days_sunday" value="available_anytime">
-                                  </label>
+                                <div class="help" @click="addDay('Domingo')" :class="{active: info.support.available.days.includes('Domingo')}">
+                                  <label for="available_days_sunday" ><small>Dom</small> </label>
                                 </div>
                               </div>
-
                             </div>
                           </div>
 
@@ -357,13 +336,7 @@
                           @click="nextStep"
                           :class="{
                             'disabled':
-                            !info.support.available.days.monday
-                            & !info.support.available.days.tuesday
-                            & !info.support.available.days.wednesday
-                            & !info.support.available.days.thursday
-                            & !info.support.available.days.friday
-                            & !info.support.available.days.saturday
-                            & !info.support.available.days.sunday
+                            info.support.available.days.length === 0
                             || (!info.support.available.anytime_hours && !info.support.available.expedient && !info.support.available.others)}">
                           Próximo
                         </div>
@@ -640,7 +613,7 @@ export default {
           support: {
             products: {},
             available: {
-              days: {}
+              days: []
             }
           }
         },
@@ -665,6 +638,7 @@ export default {
         },
       }
     },
+
     computed: {
       swiper() {
         return this.$refs.mySwiper.$swiper
@@ -786,6 +760,16 @@ export default {
         document.querySelector('[data-uf='+cepData.uf+']').setAttribute('selected','selected')
         this.info.address.state = document.querySelector('[data-uf='+cepData.uf+']').value
         this.getCities(false, cepData.localidade)
+      },
+      addDay(day) {
+        if(this.info.support.available.days.includes(day)) {
+          this.info.support.available.days = this.info.support.available.days.filter((item)=>{
+            return item != day
+          })
+          return;
+        }
+
+        this.info.support.available.days.push(day)
       }
     }
 }

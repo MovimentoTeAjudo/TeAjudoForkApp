@@ -1,21 +1,31 @@
 <template>
-  <div class="">
-    <ul>
-      <li v-if="options.days.monday">Seg</li>
-      <li v-if="options.days.tuesday">Ter</li>
-      <li v-if="options.days.wednesday">Qua</li>
-      <li v-if="options.days.thursday">Qui</li>
-      <li v-if="options.days.friday">Sex</li>
-      <li v-if="options.days.saturday">Sáb</li>
-      <li v-if="options.days.sunday">Dom</li>
-    </ul>
+  <div class="available">
 
-    <ul>
-      <li v-if="options.anytime_hours">24 horas</li>
-      <li v-if="options.expedient">9h ás 18h</li>
-      <li v-if="options.add_others && options.others">{{options.others}}</li>
-      <li>
-        <span v-if="options.delivery">
+
+    <div class="row">
+      <div class="col-md-5 col-7">
+        <div class="row">
+          <div class="col-sm-12 col-md-9">
+            <span>Horário de atendimento</span>
+            <div class="available--days">
+              <div class="day" @click="showAllDays = !showAllDays" :class="{active: getCurrentDay(item)}" :data-day="item"  v-for="(item,index) in options.days" >
+                  <span class="">{{item}}</span>
+                  <span class="hour" v-if="options.anytime_hours">24 horas</span>
+                  <span class="hour" v-if="options.expedient">9h ás 18h</span>
+                  <span class="hour" v-if="options.add_others && options.others">{{options.others}}</span>
+              </div>
+              <div class="showAllDays">
+                <span @click="showAllDays = !showAllDays" class="material-icons">
+                  {{showAllDays ? 'keyboard_arrow_up':'keyboard_arrow_down'}}
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-5 text-right">
+        <span class="available--delivery" v-if="options.delivery">
           <i>
           <svg width="16" height="16" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 404.742 404.742" style="enable-background:new 0 0 404.742 404.742;" xml:space="preserve">
@@ -39,26 +49,77 @@
 </i>
           <span>Fazemos entregas</span>
         </span>
-      </li>
-    </ul>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
 export default {
   props: ['options'],
+  data() {
+    return {
+      showAllDays: false
+    }
+  },
+  watch: {
+    showAllDays(v) {
+      const days = document.querySelector('.available--days')
+
+      if(v) days.style.maxHeight = (this.options.days.length * 50)+'px'
+      if(!v) days.style.maxHeight = '25px'
+
+      days.classList.toggle('active')
+    }
+  },
+  methods: {
+    getCurrentDay(day) {
+      const days = {'Segunda':1,'Terça':2,'Quarta':3,'Quinta':4,'Sexta':5,'Sábado':6,'Domingo':0}
+      const indexDay = days[day]
+      const date = new Date();
+      return indexDay === date.getDay()
+    },
+  }
 }
 </script>
 
 <style lang="sass" scoped>
-  ul
-    li
-      padding: 10px 15px
-      background: #4eb351
-      border-radius: 4px
-      color: white
-      display: inline-flex
-      font-size: 12px
-      font-weight: 700
-      margin-bottom: 10px
+  .available
+    &--delivery
+      font-size: 15px
+      color: #4eb350
+      @media only screen and (max-width: 600px)
+        font-size: 13px
+    .showAllDays
+      position: absolute
+      top: 0
+      right: -5px
+      cursor: pointer
+    &--days
+      position: relative
+      cursor: pointer
+      margin-bottom: 20px
+      max-height: 25px
+      overflow: hidden
+      transition: max-height .2s ease
+      transition-delay: .1s
+      &.active
+        max-height: 300px
+        .day
+          visibility: visible
+      .day
+        display: block
+        font-size: 15px
+        transition: visibility .2s ease
+        transition-delay: .1s
+        margin-bottom: 10px
+        &.active
+          visibility: visible
+        visibility: hidden
+        .hour
+          margin-left: 10px
+        @media only screen and (max-width: 600px)
+          font-size: 13px
+          margin-bottom: 5px
 </style>
