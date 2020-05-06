@@ -563,6 +563,11 @@
                     </label>
                   </div>
                   <div class="form-group text-right mt-4">
+                    <div class="col-6">
+                      <div class="btn btn-block btn-white btn-prev">
+                        Anterior
+                      </div>
+                    </div>
                     <button @click="onSubmit" class="btn btn-block btn-info"
                     :disabled="!info.support.veracidade"
                     :class="{
@@ -699,6 +704,10 @@ export default {
             type: 'success'
           });
 
+          if(payload.data.user) {
+            this.$cookies.set('_mvta_auth', payload.data.user, 60 * 60 * 12)
+          }
+
           this.actionSetNewUser(payload.data.data)
           this.$router.push('/mapa');
 
@@ -776,10 +785,10 @@ export default {
         this.info.support.available.days.push(day)
       },
       onSigned(data) {
-        console.log(data.email);
         this.info.support.owner = data.name
         this.info.email = data.email
         this.info.google_id = data.id
+        this.info.photo = data.photo
       }
     },
 }

@@ -12,6 +12,7 @@ import StaySafe from '@views/StaySafe'
 import Store from '@views/Store'
 import List from '@views/List'
 import Item from '@views/Item'
+import Login from '@views/Login'
 
 const baseRoutes = [
   {
@@ -50,6 +51,12 @@ const baseRoutes = [
     name: 'home_map',
     component: Map,
     meta: { bodyClass: 'dashboard' },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    meta: { bodyClass: 'dashboard login' },
   },
   {
     path: '/:slug',

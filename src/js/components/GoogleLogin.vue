@@ -2,7 +2,7 @@
   <div class="">
     <GoogleLogin class="btn btn-google btn-block btn-white" :params="google.params"  :onSuccess="onSuccess" :onFailure="onFailure">
       <span class="icon-google"></span>
-      {{isLogged ? 'Entrou como '+name : 'Entrar com Google' }}
+      {{isLogged ? labelButton+' '+name : 'Entrar com Google' }}
     </GoogleLogin>
   </div>
 </template>
@@ -12,9 +12,11 @@ import GoogleLogin from 'vue-google-login';
 import EventBus from '@src/event-bus';
 
 export default {
+  props: ['label'],
   components: {   GoogleLogin },
   data() {
     return {
+      labelButton: this.label ? this.label : 'Entrou como',
       isLogged: false,
       name: '',
       google: {

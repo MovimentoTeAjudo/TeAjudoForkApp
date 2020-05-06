@@ -68,14 +68,14 @@ body {
 
   .content {
 
-    padding-right: 280px;
+    padding-left: 60px;
     color: $darkblue;
     font-size: 16px;
 
     @media only screen and (max-width: 600px) {
       padding-top: 20px;
       padding-bottom: 40px;
-      padding-right: 0;
+      padding-left: 0;
     }
   }
 

@@ -4,9 +4,16 @@
        <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-left  :hidden-background="hiddenBackground" :click-not-close="clickNotClose" color="success" :reduce="reduce"  class="sidebarx" spacer >
 
         <div class="header-sidebar" slot="header">
-          <vs-avatar  size="70px" src="/images/farmer/logo.png"/>
+          <vs-avatar v-if="!user" size="20px" src="/images/farmer/logo.png"/>
+          <vs-avatar v-if="user" size="70px" src="/images/perfil.png"/>
+          <h4 v-if="user">
+            {{user.name}}
+          </h4>
         </div>
 
+        <vs-sidebar-item index="0" icon="exit_to_app" to="/login">
+          Login
+        </vs-sidebar-item>
         <vs-sidebar-item index="1" icon="home" to="/">
           Home
         </vs-sidebar-item>
@@ -37,10 +44,14 @@
           Atualizar App
         </vs-sidebar-item>
 
+        <vs-sidebar-item v-if="user" index="8" icon="exit_to_app" @click="logout">
+          Sair
+        </vs-sidebar-item>
+
 
 
         <div class="footer-sidebar" slot="footer">
-          <vs-sidebar-item index="7" icon="keyboard_arrow_right">
+          <vs-sidebar-item index="9" icon="keyboard_arrow_right">
             &nbsp;
           </vs-sidebar-item>
 
@@ -69,8 +80,13 @@ export default {
       isAndroid: isAndroid,
       isMobileSafari: isMobileSafari,
       installedAppPWA: false,
-      showInstall: false
+      showInstall: false,
+
+      user: false,
     }
+  },
+  mounted() {
+    this.checkIsLogged()
   },
   updated() {
     if(self.INSTALLAPPEVENT) this.showInstall = true
@@ -82,6 +98,12 @@ export default {
 
   },
   methods: {
+    checkIsLogged() {
+      if(this.$cookies.get('_mvta_auth')) {
+        this.user = this.$cookies.get('_mvta_auth')
+        console.log(this.user);
+      }
+    },
     changeState(v){
       setTimeout(()=>{
         this.active = v
@@ -113,6 +135,11 @@ export default {
     },
     updateApp() {
       self.location.reload()
+    },
+    logout() {
+      this.user = false
+      this.$cookies.remove('_mvta_auth')
+      this.updateApp()
     }
   }
 }
