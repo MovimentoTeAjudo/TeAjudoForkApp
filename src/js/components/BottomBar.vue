@@ -7,8 +7,11 @@
         <div class="col-12 text-center">
 
 
-          <router-link  class="btn btn-block btn-white" to="/novo-produtor">
+          <router-link v-if="!user" class="btn btn-block btn-white" to="/novo-produtor">
             <span>Sou um produtor</span>
+          </router-link>
+          <router-link v-if="user"  class="btn btn-block btn-white" :to="`/`+user.slug">
+            <span>Meu negócio</span>
           </router-link>
 
         </div>
@@ -27,6 +30,7 @@ export default {
   name: 'BottomBar',
   data() {
     return {
+      user: false,
       isActive: false,
       isMap: this.$router.currentRoute.name == 'home',
       isList: this.$router.currentRoute.name == 'List',
@@ -38,15 +42,19 @@ export default {
       'getTotalMarkers',
     ]),
   },
-  updated() {
-    console.log(this.isMap);
-    console.log(this.isList);
+  mounted(){
+    this.checkIsLogged()
   },
   methods: {
     getTotal(type) {
       return this.getMarkers.filter((item)=>{
         return item.type == type
       }).length
+    },
+    checkIsLogged() {
+      if(this.$cookies.get('_mvta_auth')) {
+        this.user = this.$cookies.get('_mvta_auth')
+      }
     },
   }
 }

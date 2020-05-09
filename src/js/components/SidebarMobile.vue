@@ -24,8 +24,12 @@
           Lista
         </vs-sidebar-item>
 
-        <vs-sidebar-item index="4" icon="store" to="/novo-produtor">
+        <vs-sidebar-item v-if="!user" index="4" icon="store" to="/novo-produtor">
           Sou um produtor
+        </vs-sidebar-item>
+
+        <vs-sidebar-item v-if="user" index="4" icon="store" :to="`/`+user.slug">
+          Meu negócio
         </vs-sidebar-item>
 
 

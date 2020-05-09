@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row justify-content-center">
         <div v-if="item" class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-          <h1 class="single-info__title">{{item.name}}</h1>
+          <h1 class="single-info__title">{{item.name}}
+            <span v-if="user" class="btn btn-active">Editar</span>
+          </h1>
           <h3 class="single-info__type" v-if="item.options && item.options.agricultor_familiar">Agricultor Familiar</h3>
           <h3 class="single-info__type" v-if="item.options && item.options.agricultor_familiar_de_grupo">Agricultor Familiar Grupo/Comunidade</h3>
           <h3 class="single-info__type" v-if="item.options && item.options.agricultor_urbano">Agricultor Urbano</h3>
@@ -54,11 +56,13 @@ export default {
   },
   data() {
     return {
-      item: false
+      item: false,
+      user: false,
     }
   },
   mounted() {
     this.getItem()
+    this.checkIsLogged()
   },
   created() {
     EventBus.$emit('OPEN_SIDEBAR_HOME', false);
@@ -72,6 +76,11 @@ export default {
     ...mapGetters([
       'getMarkers',
     ]),
+    checkIsLogged() {
+      if(this.$cookies.get('_mvta_auth')) {
+        this.user = this.$cookies.get('_mvta_auth')
+      }
+    },
     getItem() {
       const item = this.$store.getters.getMarkers.filter((item)=>{
         return item.slug == this.slug

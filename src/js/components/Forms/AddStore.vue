@@ -90,7 +90,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label for="">Cidade *</label>
-                              <select class="form-control" v-model="info.address.city" name="">
+                              <select :disabled="!cities" :class="{disabled:!cities}"  class="form-control" v-model="info.address.city" name="">
                                 <option :data-city="item.title" :value="item.id" v-for="(item,index) in cities">{{item.title}}</option>
                               </select>
                             </div>
@@ -714,7 +714,8 @@ export default {
           }
 
           this.actionSetNewUser(payload.data.data)
-          this.$router.push('/mapa');
+          //this.$router.push('/mapa');
+          window.location.href = '/mapa'
 
           this.info = {location:{}, support:{}}
         } else {
@@ -742,6 +743,7 @@ export default {
         this.info.location.lng = v.geometry.coordinates[0]
       },
       async getCities(v, select) {
+        this.cities = false
         const payload = await this.$http.get(window.config.api_url+'/api/cities',
         {
           params: { state_id: this.info.address.state }
