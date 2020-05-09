@@ -36,11 +36,11 @@ export default {
     };
   },
   mounted() {
-    this.sendTagHash();
+    //this.sendTagHash();
 
-    setTimeout(()=>{
-      this.startStep = this.$cookies.isKey('_tastartstep') || !isMobile ? true : false
-    },1000)
+    // setTimeout(()=>{
+    //   this.startStep = this.$cookies.isKey('_tastartstep') || !isMobile ? true : false
+    // },1000)
   },
   created() {
 

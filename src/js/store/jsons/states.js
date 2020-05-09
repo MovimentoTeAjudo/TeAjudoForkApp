@@ -10,12 +10,12 @@ export default [
     abbr: 'AL',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Amapá',
     abbr: 'AP',
   },
   {
-    id: 4,
+    id: 3,
     name: 'Amazonas',
     abbr: 'AM',
   },
@@ -50,12 +50,7 @@ export default [
     abbr: 'MA',
   },
   {
-    id: 11,
-    name: 'Mato Grosso',
-    abbr: 'MT',
-  },
-  {
-    id: 11,
+    id: 13,
     name: 'Mato Grosso',
     abbr: 'MT',
   },
@@ -65,7 +60,7 @@ export default [
     abbr: 'MS',
   },
   {
-    id: 13,
+    id: 11,
     name: 'Minas Gerais',
     abbr: 'MG',
   },
@@ -80,17 +75,17 @@ export default [
     abbr: 'PB',
   },
   {
-    id: 16,
+    id: 18,
     name: 'Paraná',
     abbr: 'PR',
   },
   {
-    id: 17,
+    id: 16,
     name: 'Pernambuco',
     abbr: 'PE',
   },
   {
-    id: 18,
+    id: 17,
     name: 'Piauí',
     abbr: 'PI',
   },
@@ -105,17 +100,17 @@ export default [
     abbr: 'RN',
   },
   {
-    id: 21,
+    id: 23,
     name: 'Rio Grande do Sul',
     abbr: 'RN',
   },
   {
-    id: 22,
+    id: 21,
     name: 'Rondônia',
     abbr: 'RO',
   },
   {
-    id: 23,
+    id: 22,
     name: 'Roraima',
     abbr: 'RR',
   },
@@ -125,12 +120,12 @@ export default [
     abbr: 'SC',
   },
   {
-    id: 25,
+    id: 26,
     name: 'São Paulo',
     abbr: 'SP',
   },
   {
-    id: 26,
+    id: 25,
     name: 'Sergipe',
     abbr: 'SE',
   },

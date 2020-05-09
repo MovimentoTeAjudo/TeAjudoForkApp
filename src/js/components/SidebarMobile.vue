@@ -11,7 +11,7 @@
           </h4>
         </div>
 
-        <vs-sidebar-item index="0" icon="exit_to_app" to="/login">
+        <vs-sidebar-item v-if="!user" index="0" icon="exit_to_app" to="/login">
           Login
         </vs-sidebar-item>
         <vs-sidebar-item index="1" icon="home" to="/">
@@ -101,7 +101,6 @@ export default {
     checkIsLogged() {
       if(this.$cookies.get('_mvta_auth')) {
         this.user = this.$cookies.get('_mvta_auth')
-        console.log(this.user);
       }
     },
     changeState(v){

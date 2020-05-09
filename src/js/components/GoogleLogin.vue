@@ -28,14 +28,19 @@ export default {
   },
   mounted() {
     EventBus.$on('GOOGLE_SIGNED_DATA', (r)=>{
-      console.log(r);
       if(r.logged) {
-        this.onSigned(r.data)
+        this.setData(r.data)
       }
     })
   },
 
   methods: {
+    setData(guser) {
+      const profile = guser.getBasicProfile();
+
+      this.isLogged = true
+      this.name = profile.getName()
+    },
     onSigned(guser) {
       const profile = guser.getBasicProfile();
 

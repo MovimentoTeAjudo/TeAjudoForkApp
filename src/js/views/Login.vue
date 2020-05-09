@@ -12,7 +12,7 @@
             <input type="password" class="form-control" name="password" v-model="info.password" value="">
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-block btn-info" name="button">Entrar</button>
+            <button @click="onSubmit" type="button" class="btn btn-block btn-info" name="button">Entrar</button>
           </div>
           <vs-divider>ou</vs-divider>
           <GoogleLogin @onSigned="onSigned" label="Entrar como" />
@@ -41,8 +41,6 @@ export default {
   },
   methods: {
     onSigned(v) {
-      console.log('a',v);
-
       this.info.name = v.name
       this.info.email = v.email
       this.info.photo = v.photo
@@ -51,12 +49,19 @@ export default {
       this.onSubmit()
     },
     async onSubmit() {
+
       const payload = await this.$http.post(window.config.api_url + '/api/auth', this.info);
+
+      if(!payload.data.status) {
+        this.$notify({group: 'foo',title: 'Ops!',text: payload.data.message,type: 'error'});
+        return;
+      }
       if(payload.data.user) {
         this.$cookies.set('_mvta_auth', payload.data.user, 60 * 60 * 12)
-        this.$router.push('/mapa');
+        //this.$router.push('/mapa');
+        window.location.href = "/mapa"
       }
-    }
+    },
   }
 }
 </script>

@@ -86,7 +86,16 @@
 
                           </div>
                         </div>
-
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label for="">Cidade *</label>
+                              <select class="form-control" v-model="info.address.city" name="">
+                                <option :data-city="item.title" :value="item.id" v-for="(item,index) in cities">{{item.title}}</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="col-12">
                             <div class="form-group" >
@@ -105,16 +114,12 @@
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label for="">Cidade *</label>
-                              <select class="form-control" v-model="info.address.city" name="">
-                                <option :data-city="item.name" :value="item.id" v-for="(item,index) in cities">{{item.name}}</option>
-                              </select>
+                              <label for="">Complemento *</label>
+                               <input autocomplete="off" type="text" class="form-control" v-model="info.support.address_complement" name="complement" value="">
                             </div>
-
                           </div>
                         </div>
                       </div>
-
                     </div>
 
                     <div class="row mt-xl-2 mt-4">
@@ -739,7 +744,7 @@ export default {
       async getCities(v, select) {
         const payload = await this.$http.get(window.config.api_url+'/api/cities',
         {
-          params: { uf_id: this.info.address.state }
+          params: { state_id: this.info.address.state }
         })
         this.cities = payload.data.data
 
@@ -793,6 +798,9 @@ export default {
     },
 }
 </script>
-<style lang="scss">
-
+<style lang="sass">
+  .mapboxgl-ctrl-geocoder
+    .suggestions
+      height: 160px
+      overflow-y: scroll
 </style>
